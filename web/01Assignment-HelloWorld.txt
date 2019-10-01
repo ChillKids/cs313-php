@@ -1,0 +1,24 @@
+After completing the assignment, please answer the questions in this text file and submit it to I-Learn.
+
+1. Copy and paste the URL for your Heroku web application:
+https://pacific-atoll-57858.herokuapp.com/hello.html
+
+2. Copy and paste the URL for your GitHub source code repository:
+https://github.com/ChillKids/cs313-php.git
+
+3. Briefly list and describe the elements of the application that are functioning. Include any special instructions about how to login and/or use your application.
+It will print out hello world!! on the screen
+
+4. Briefly describe any pieces of the assignment that are not yet working correctly.
+none
+
+5. Briefly describe the "coolest" thing you learned while completing this assignment.
+Learning how to use command prompt to run git and pushing things to different directory rather than github is awesome.
+
+6. Please select the category you feel best describes your assignment: [1-5]
+5 - Shows creativity and excels above and beyond requirements
+
+
+7. Provide a brief justification (1-2 sentences) for selecting that category.
+I have successfully met all the requirements. I have added a text-align code into the hello world assignment.
+And I have learned some more extra things like VScode in cmd is called code. 
