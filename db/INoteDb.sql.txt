@@ -1,0 +1,7 @@
+Create TABLE user_profile(
+canvas_id VARCHAR(100),
+note int,
+class_id int,
+PRIMARY KEY(canvas_id)
+);
+
