@@ -44,3 +44,9 @@ ADD FOREIGN KEY (module_id) REFERENCES module(id);
 
 ALTER TABLE module
 ADD FOREIGN KEY (note_id) REFERENCES note(id);
+
+ALTER TABLE module
+ADD class_id int;
+
+ALTER TABLE module
+ADD FOREIGN KEY (class_id) REFERENCES class(id);
