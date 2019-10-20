@@ -25,16 +25,17 @@ catch (PDOException $ex)
 
 
 echo '<form action=INotedb.php method=POST>';
-echo 'Enter your username: <input type=text name=id>';
+echo 'Enter your username: <input type=text name=user_name>';
 echo '<input type=submit value=Your name>';
 echo '</form>';
 
-$id = $_POST['id'];
+$user_name = $_POST['user_name'];
 
-foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\''. $id . '\'') as $row)
+foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\''. $user_name . '\'') as $row)
 {
   echo '<strong>' . 'Your name are ' . $row['name'];
   echo '<br/>';
+    $id = $row["id"];
 }
 
  echo 'Here are the classes that you enrolling: <br>';
