@@ -29,6 +29,13 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE id = 1') as $row)
   echo '<br/>';
 }
 
+ echo 'Here are the classes that you enrolling: <br>';
+ foreach ($db->query('SELECT user_id, class_id FROM enrollment WHERE user_id = 1') as $row)
+ {
+    foreach ($db->query('SELECT id, name FROM class WHERE id = '.$row['class_id']) as $row)
+   echo '<strong>' . $row['name'];
+   echo '<br/>';
+ }
 ?>
 
 
