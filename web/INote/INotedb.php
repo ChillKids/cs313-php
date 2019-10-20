@@ -67,7 +67,7 @@ foreach ($db->query('SELECT id, content, class_id, module_id, user_id FROM note 
      echo '<strong>' . $row['name'] . '</strong>';
     
      echo 'The note is under: <br>';
-     foreach ( $db->query('SELECT id, name FROM class WHERE id = '.$noterow['class_id']) as row);
+     foreach ( $db->query('SELECT id, name FROM class WHERE id = '.$noterow['class_id']) as row)
     echo '<strong>' . $row['name'] . '</strong>';
 
    echo '<br/>';
