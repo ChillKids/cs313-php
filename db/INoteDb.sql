@@ -2,22 +2,18 @@ Create TABLE user_profile(
     id int NOT NULL UNIQUE,
     canvas_id VARCHAR(100),
     name VARCHAR(20),
-    note_id int,
-    class_id int,
-    PRIMARY KEY(canvas_id)
+    PRIMARY KEY(id)
 );
 
 Create TABLE class(
     id int NOT NULL UNIQUE,
     name VARCHAR(20),
-    module_id int,
     PRIMARY KEY(id)
 );
 
 Create TABLE module(
     id int NOT NULL UNIQUE,
     name VARCHAR(20),
-    note_id int,
     PRIMARY KEY(id)
 );
 
@@ -33,20 +29,41 @@ CREATE TABLE note(
     FOREIGN KEY (user_id) REFERENCES user_profile(id)
 );
 
-ALTER TABLE user_profile
-ADD FOREIGN KEY (note_id) REFERENCES note(id);
+CREATE TABLE user_notebook(
+    user_id  int,
+    note_id int,
+    FOREIGN KEY (user_id) REFERENCES user_profile(id),
+    FOREIGN KEY (note_id) REFERENCES note(id)
+);
 
-ALTER TABLE user_profile
-ADD FOREIGN KEY (class_id) REFERENCES class(id);
+CREATE TABLE enrollment(
+    user_id  int,
+    class_id int,
+    FOREIGN KEY (user_id) REFERENCES user_profile(id),
+    FOREIGN KEY (class_id) REFERENCES class(id)
+);
 
-ALTER TABLE class
-ADD FOREIGN KEY (module_id) REFERENCES module(id);
+CREATE TABLE class_module(
+    class_id  int,
+    module_id int,
+    FOREIGN KEY (class_id) REFERENCES class(id),
+    FOREIGN KEY (module_id) REFERENCES module(id)
+);
 
-ALTER TABLE module
-ADD FOREIGN KEY (note_id) REFERENCES note(id);
+CREATE TABLE module_note(
+    module_id  int,
+    note_id int,
+    FOREIGN KEY (module_id) REFERENCES module(id),
+    FOREIGN KEY (note_id) REFERENCES note(id)
+);
 
-ALTER TABLE module
-ADD class_id int;
 
-ALTER TABLE module
-ADD FOREIGN KEY (class_id) REFERENCES class(id);
+INSERT INTO user_profile (id, canvas_id, name) VALUES (1, 'jack1293810923', 'Jack');
+INSERT INTO class (id, name) VALUES (1, 'CS313');
+INSERT INTO module (id, name) VALUES (1, 'Week01');
+INSERT INTO note (id, content, class_id, module_id, user_id) VALUES 
+(1, 'Intro to web engineering: Dont forget to submit your hw on time', 1, 1, 1);
+INSERT INTO user_notebook (user_id, note_id) VALUES (1, 1);
+INSERT INTO enrollment (user_id, class_id) VALUES (1, 1);
+INSERT INTO class_module (class_id, module_id) VALUES (1, 1);
+INSERT INTO module_note (module_id, note_id) VALUES (1, 1);
