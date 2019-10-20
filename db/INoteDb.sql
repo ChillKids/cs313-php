@@ -67,3 +67,13 @@ INSERT INTO user_notebook (user_id, note_id) VALUES (1, 1);
 INSERT INTO enrollment (user_id, class_id) VALUES (1, 1);
 INSERT INTO class_module (class_id, module_id) VALUES (1, 1);
 INSERT INTO module_note (module_id, note_id) VALUES (1, 1);
+
+INSERT INTO class (id, name) VALUES (2, 'CS246');
+INSERT INTO module (id, name) VALUES (2, 'Week02');
+INSERT INTO note (id, content, class_id, module_id, user_id) VALUES 
+(2, 'Review HTML', 1, 2, 1);
+INSERT INTO user_notebook (user_id, note_id) VALUES (1, 2);
+INSERT INTO enrollment (user_id, class_id) VALUES (1, 2);
+INSERT INTO class_module (class_id, module_id) VALUES (1, 2);
+INSERT INTO module_note (module_id, note_id) VALUES (1, 2);
+
