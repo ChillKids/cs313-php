@@ -23,9 +23,15 @@ catch (PDOException $ex)
   die();
 }
 
-$id = 1;
 
-foreach ($db->query('SELECT id, name FROM user_profile WHERE id =' . $id) as $row)
+echo '<form action=INotedb.php method=POST>';
+echo 'Enter your username: <input type=text name=id>';
+echo '<input type=submit value=Your name>';
+echo '</form>';
+
+$id = $_POST['id'];
+
+foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\''. $id . '\'') as $row)
 {
   echo '<strong>' . 'Your name are ' . $row['name'];
   echo '<br/>';
@@ -39,8 +45,17 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE id =' . $id) as $ro
    echo '<br/>';
  }
 
- $class_id = 1;
- echo 'Here are the module in that CS313: <br>';
+
+echo '<form action=INotedb.php method=POST>';
+echo 'Which class you want to choose: <input type=text name=class_name>';
+echo '<input type=submit value= enter the name of class>';
+echo '</form>';
+
+$class_name = $_POST['class_name'];
+echo 'Here are the module in that '. $class_name .': <br>';
+
+$class_id = $db->query('SELECT id FROM class WHERE name = '.  '\''. $class_name . '\'');
+
  foreach ($db->query('SELECT class_id, module_id FROM class_module WHERE class_id ='. $class_id) as $row)
  {
     foreach ($db->query('SELECT id, name FROM module WHERE id = '.$row['module_id']) as $row)
