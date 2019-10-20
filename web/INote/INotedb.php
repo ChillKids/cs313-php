@@ -60,7 +60,7 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE id =' . $id) as $ro
 
  
  
-foreach ($db->query('SELECT id, content, class_id, module_id, user_id FROM note WHERE id = '.$row['note_id']) as $noterow){
+foreach ($db->query('SELECT id, content, class_id, module_id, user_id FROM note WHERE id = '. $note_id) as $noterow){
     echo 'The note is own by: <br>';
 
     $user_name = $db->query('SELECT id, name FROM user_profile WHERE id = '.$noterow['user_id']);
