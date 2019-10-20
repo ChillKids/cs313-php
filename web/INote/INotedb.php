@@ -47,15 +47,7 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\''. $u
  }
 
 
-echo '<form action=INotedb.php method=POST>';
-echo 'Which class you want to choose: <input type=text name=class_name>';
-echo '<input type=submit value= enter the name of class>';
-echo '</form>';
-
-$class_name = $_POST['class_name'];
-echo 'Here are the module in that '. $class_name .': <br>';
-
-$class_id = $db->query('SELECT id FROM class WHERE name = '.  '\''. $class_name . '\'');
+ $class_id = 1;
 
  foreach ($db->query('SELECT class_id, module_id FROM class_module WHERE class_id ='. $class_id) as $row)
  {
