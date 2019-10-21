@@ -41,7 +41,7 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\'' . $
             echo '<br/>';
             $class_id = $row['class_id'];
 
-            echo 'Here are the Modules in ' . $row['name'] . ': <br>';
+            echo 'Here are the Modules in ' . $row['name'] .  $class_id.': <br>';
 
             foreach ($db->query('SELECT class_id, module_id FROM class_module WHERE class_id =' . $class_id) as $row) {
                 foreach ($db->query('SELECT id, name FROM module WHERE id = ' . $row['module_id']) as $row) {
