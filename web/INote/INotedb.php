@@ -66,7 +66,7 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\'' . $
                                 foreach ($db->query('SELECT id, name FROM class WHERE id = ' . $noterow['class_id']) as $row)
                                     echo '<strong>' . $row['name'] . '</strong>';
 
-                                echo '<br/><br>';
+                                echo '<br/>';
                             }
                         }
                     }
