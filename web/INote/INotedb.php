@@ -22,7 +22,7 @@ try {
 
 
 echo '<form action=INotedb.php method=POST>';
-echo 'Enter your username: <input type=text name=user_name>';
+echo 'Enter your username: (Enter: Jack)<input type=text name=user_name>';
 echo '<input type=submit value=Your name>';
 echo '</form>';
 
@@ -39,15 +39,15 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\'' . $
         foreach ($db->query('SELECT id, name FROM class WHERE id = ' . $row['class_id']) as $row) {
             echo '<strong>' . $row['name'];
             echo '<br/>';
-
-    echo 'Here are the Modules in that class: <br>';
-            foreach ($db->query('SELECT class_id, module_id FROM class_module WHERE class_id =' . $row['class_id']) as $row) {
+            $class_id = $row['class_id'];
+    echo 'Here are the Modules in that' . $row['name'] .': <br>';
+            foreach ($db->query('SELECT class_id, module_id FROM class_module WHERE class_id =' . $class_id) as $row) {
                 foreach ($db->query('SELECT id, name FROM module WHERE id = ' . $row['module_id']) as $row)
                     echo '<strong>' . $row['name'];
                 echo '<br/>';
-
+                $module_id =  $row['module_id'];
                 echo 'Here are the notes in that' . $row['name'] . ': <br>';
-                foreach ($db->query('SELECT module_id, note_id FROM module_note WHERE module_id =' . $row['module_id']) as $row) {
+                foreach ($db->query('SELECT module_id, note_id FROM module_note WHERE module_id =' . $module_id) as $row) {
                     foreach ($db->query('SELECT id, content FROM note WHERE id = ' . $row['note_id']) as $row)
                         echo '<strong>' . $row['content'];
                     echo '<br/>';
