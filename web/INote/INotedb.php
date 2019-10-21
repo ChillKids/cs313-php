@@ -33,23 +33,25 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\'' . $
     echo '<br/>';
     $id = $row["id"];
 
-    echo 'Here are the classes that you enrolling: <br>';
+   
 
     foreach ($db->query('SELECT user_id, class_id FROM enrollment WHERE user_id =' . $id) as $row) {
         foreach ($db->query('SELECT id, name FROM class WHERE id = ' . $row['class_id']) as $row) {
+            echo 'Here are the class that you enrolling: <br>';
             echo '<strong>' . $row['name'];
             echo '<br/>';
             $class_id = $row['id'];
 
-            echo 'Here are the Modules in ' . $row['name'] .': <br>';
+            
 
             foreach ($db->query('SELECT class_id, module_id FROM class_module WHERE class_id =' . $class_id) as $row) {
                 foreach ($db->query('SELECT id, name FROM module WHERE id = ' . $row['module_id']) as $row) {
+                    echo 'Here are the Modules in ' . $row['name'] .': <br>';
                     echo '<strong>' . $row['name'];
                     echo '<br/>';
                     $module_id =  $row['id'];
-                    echo 'Here are the notes in that ' . $row['name'] . ': <br>';
 
+                    echo '<br>Here are the notes in that ' . $row['name'] . ': <br>';
                     foreach ($db->query('SELECT module_id, note_id FROM module_note WHERE module_id =' . $module_id) as $row) {
                         foreach ($db->query('SELECT id, content FROM note WHERE id = ' . $row['note_id']) as $row) {
                             echo '<strong>' . $row['content'];
@@ -66,7 +68,7 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\'' . $
                                 foreach ($db->query('SELECT id, name FROM class WHERE id = ' . $noterow['class_id']) as $row)
                                     echo '<strong>' . $row['name'] . '</strong>';
 
-                                echo '<br/>';
+                                echo '<br/><br>';
                             }
                         }
                     }
