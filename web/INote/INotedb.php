@@ -33,7 +33,7 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\'' . $
     echo '<br/>';
     $id = $row["id"];
 
-    echo '<br>Here are the classes that you enrolling: <br>';
+    echo 'Here are the classes that you enrolling: <br>';
 
     foreach ($db->query('SELECT user_id, class_id FROM enrollment WHERE user_id =' . $id) as $row) {
         foreach ($db->query('SELECT id, name FROM class WHERE id = ' . $row['class_id']) as $row) {
@@ -66,7 +66,7 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\'' . $
                                 foreach ($db->query('SELECT id, name FROM class WHERE id = ' . $noterow['class_id']) as $row)
                                     echo '<strong>' . $row['name'] . '</strong>';
 
-                                echo '<br/>';
+                                echo '<br/><br>';
                             }
                         }
                     }
