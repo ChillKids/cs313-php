@@ -1,0 +1,114 @@
+/*INote.css*/
+
+header {
+    margin: auto;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    background-color: #444444;
+    color: #ffffff;
+}
+
+.body {
+    box-sizing: border-box;
+    background-image: url("salt-table.jpg")
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 15px;
+}
+
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+
+.btn-group-toggle {
+    margin: 30px;
+    text-align: center;
+}
+
+.Form {
+    background-color: #999999;
+    margin: 15px;
+    margin-left: 50px;
+    padding: 15px;
+    color: #ffffff;
+    text-align: left;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    opacity: 0.9;
+}
+
+#itemsList,
+#total,
+#address {
+    padding-left: 30px;
+}
+
+#itemsList {
+    margin-bottom: 30px;
+}
+
+#total {
+    margin-bottom: 30px;
+}
+
+.carousel-inner {
+    opacity: 1;
+}
+
+.aside {
+    background-color: #999999;
+    padding: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-size: 14px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    opacity: 0.9;
+}
+
+.footer {
+    background-color: #999999;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+    opacity: 0.9;
+}
+
+.subAddress {
+    padding-top: 13px;
+}
+
+
+/* For mobile phones: */
+
+[class*="col-"] {
+    width: 100%;
+}
+
+@media only screen and (min-width: 600px) {
+    /* For tablets: */
+    .col-s-9 {
+        width: 75%;
+    }
+    .col-s-12 {
+        width: 100%;
+    }
+}
+
+@media only screen and (min-width: 768px) {
+    /* For desktop: */
+    .col-3 {
+        width: 25%;
+    }
+    .col-8 {
+        width: 50%;
+    }
+}
