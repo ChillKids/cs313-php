@@ -10,7 +10,7 @@ header {
 
 .body {
     box-sizing: border-box;
-    background-image: url("salt-table.jpg")
+    background-image: url("../prove03/salt-table.jpg")
 }
 
 .row::after {
