@@ -135,7 +135,7 @@ foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\'' . $
 
    echo '         </div>
 
-            <div class="col-3 col-s-12">
+            <div class="col-3 col-s-8">
                 <div class="aside">
                     <h2>How?</h2>
                     <p>1.Fill Up the form.<br> 2.Get your php
