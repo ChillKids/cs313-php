@@ -72,7 +72,7 @@ echo '
     <div class="body">
         <div class="row">
             <div class="col-8 col-s-9 Form">
-            <h2>INote</h2><br>
+            <h2>INote Sign Up</h2><br>
             ';
  
             
@@ -81,7 +81,11 @@ echo 'Enter your username: (Enter: Jack)<input type=text name=user_name>';
 echo '<input type=submit value="Enter">';
 echo '</form><br>';
 
-echo 'Do not have your account? <a href="SignUp.php">Click Here to Sign Up</a>';
+echo '<form action=INotedb.php method=POST>';
+echo 'Do not have your account? Click Here to Sign Up';
+echo '<input type=submit value="Enter">';
+echo '</form>';
+
 $user_name = $_POST['user_name'];
 
 foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\'' . $user_name . '\'') as $row) {
