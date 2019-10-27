@@ -1,9 +1,10 @@
 <?php
-require ('dbconnection.php');
+require('dbconnection.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,8 +33,8 @@ require ('dbconnection.php');
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Assignments
-                  </a>
+                        Assignments
+                    </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="../hello.html">Assignment01:Hello World</a>
                         <a class="dropdown-item" href="../prove02/prove02.html">Assignment02:HomePage</a>
@@ -55,44 +56,14 @@ require ('dbconnection.php');
     <div class="body">
         <div class="row">
             <div class="col-8 col-s-9 Form">
-            <h2>INote</h2><br>
-<?php     
-echo '<form action=SignUp.php method=POST>';
-echo 'Create your username:<input type=text name=user_name><br>';
-echo 'Enter your password:<input type=text name=password><br>';
-echo '<input type=submit value=SignUp>';
-echo '</form><br>';
+                <h2>INote</h2><br>
 
-$name = $_POST['name'];
-$password = $_POST['password'];
-echo 'user name ='. $name .'<br/>';
-
-$statement = $db->query("SELECT id FROM user_profile WHERE name = '$name'");
-$results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-if(!empty($results)) {
-    echo 'User Already in Exists<br/>';
-}
-
-else
-{
-    try{
-    $stmt = $db->prepare("INSERT INTO user_profile (name, password) VALUES (:name, :password)");
-    $stmt->bindValue(':password', $password, PDO::PARAM_STR);
-    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
-    $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    echo 'Successfully Registor! It will redirect to the homepage in 5 sec<br/>';
-    header( "refresh:5; url=INotedb.php" ); 
-    }
-    catch(PDOException $ex){
-        echo 'Error!: ' . $ex->getMessage();
-    die();
-    }
-}
-?>
-
- </div>
+                <form action=SignUpSql.php method=POST>
+                    Create your username:<input type=text name=user_name required><br>
+                    Enter your password:<input type=text name=password required><br>
+                    <input type=submit value=SignUp>
+                </form><br>
+            </div>
 
             <div class="col-3 col-s-12">
                 <div class="aside">
@@ -112,5 +83,5 @@ else
     </div>
 
 </body>
-</html>
 
+</html>
