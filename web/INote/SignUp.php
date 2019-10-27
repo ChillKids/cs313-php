@@ -87,7 +87,7 @@ echo 'user name ='. $user_name .'<br/>';
 $check= "SELECT * FROM user_profile WHERE name = '$user_name'";
 $stmt = $this->pdo->prepare($check);
 
-if($stmt[0] > 1) {
+if($stmt != NULL) {
     echo "User Already in Exists<br/>";
 }
 
