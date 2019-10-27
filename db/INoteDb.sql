@@ -54,7 +54,7 @@ CREATE TABLE module_note(
 );
 
 
-INSERT INTO user_profile (id, canvas_id, name) VALUES (1, 'jack1293810923', 'Jack');
+INSERT INTO user_profile (name, password) VALUES ('Jack', '1234');
 INSERT INTO class (id, name) VALUES (1, 'CS313');
 INSERT INTO module (id, name) VALUES (1, 'Week01');
 INSERT INTO note (id, content, class_id, module_id, user_id) VALUES 

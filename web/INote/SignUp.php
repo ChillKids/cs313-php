@@ -64,6 +64,7 @@ echo '<input type=submit value=SignUp>';
 echo '</form><br>';
 
 $user_name = $_POST['user_name'];
+$user_password = $_POST['password'];
 echo 'user name ='. $user_name .'<br/>';
 
 $statement = $db->query("SELECT id FROM user_profile WHERE name = '$user_name'");
@@ -75,13 +76,19 @@ if(!empty($results)) {
 
 else
 {
-    echo 'User name available<br/>';
-    /*
-    $stmt = $db->prepare('SELECT * FROM table WHERE id=:id AND name=:name');
-    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    try{
+    $stmt = $db->prepare("INSERT INTO user_profile (name, password) VALUES ($user_name, $user_password);");
+    $stmt->bindValue(':user_password', $user_password, PDO::PARAM_STR);
+    $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
     $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo 'Successfully Registor! It will redirect to the homepage in 5 sec<br/>';
+    header( "refresh:5; url=INotedb.php" ); 
+    }
+    catch(PDOException $ex){
+        echo 'Error!: ' . $ex->getMessage();
+    die();
+    }
 }
 ?>
 
