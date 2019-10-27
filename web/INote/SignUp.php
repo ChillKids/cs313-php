@@ -39,7 +39,7 @@ require('dbconnection.php');
                         <a class="dropdown-item" href="../hello.html">Assignment01:Hello World</a>
                         <a class="dropdown-item" href="../prove02/prove02.html">Assignment02:HomePage</a>
                         <a class="dropdown-item" href="../prove03/ShoppingCart.html">Assignment03:ShoppingCart</a>
-                        <a class="dropdown-item" href="../INote/HomePage.html">INote</a>
+                        <a class="dropdown-item" href="../INote/INotedb.php">INote</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#footer">About the author</a>
                         <a class="dropdown-item" href="#footer">About this assignment</a>
