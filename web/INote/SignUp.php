@@ -84,16 +84,16 @@ echo '</form><br>';
 $user_name = $_POST['user_name'];
 echo 'user name ='. $user_name .'<br/>';
 
-$check= "SELECT * FROM user_profile WHERE name = '$user_name'";
-$stmt = $this->pdo->prepare($check);
+$statement = $db->query("SELECT id FROM user_profile WHERE name = '$user_name'");
+$results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-if($stmt != NULL) {
-    echo "User Already in Exists<br/>";
+if(empty($results)) {
+    echo 'User Already in Exists<br/>';
 }
 
 else
 {
-    echo "User name available<br/>";
+    echo 'User name available<br/>';
    /* $newUser="INSERT INTO persons(Email,FirstName,LastName,PassWord) values('$_POST[eMailTxt]','$_POST[NameTxt]','$_POST[LnameTxt]','$_POST[passWordTxt]')";
     if (mysqli_query($con,$newUser))
     {
