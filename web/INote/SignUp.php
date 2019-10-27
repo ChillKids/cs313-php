@@ -1,26 +1,9 @@
-
 <?php
-try {
-    $dbUrl = getenv('DATABASE_URL');
+require ('dbconnection.php');
+?>
 
-    $dbOpts = parse_url($dbUrl);
-
-    $dbHost = $dbOpts["host"];
-    $dbPort = $dbOpts["port"];
-    $dbUser = $dbOpts["user"];
-    $dbPassword = $dbOpts["pass"];
-    $dbName = ltrim($dbOpts["path"], '/');
-
-    $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
-
-    $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $ex) {
-    echo 'Error!: ' . $ex->getMessage();
-    die();
-}
-
-
-echo '
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -72,12 +55,11 @@ echo '
     <div class="body">
         <div class="row">
             <div class="col-8 col-s-9 Form">
-            <h2>INote Sign Up</h2><br>
-            ';
- 
-            
+            <h2>INote</h2><br>
+<?php     
 echo '<form action=SignUp.php method=POST>';
 echo 'Create your username:<input type=text name=user_name><br>';
+echo 'Enter your password:<input type=text name=password><br>';
 echo '<input type=submit value=SignUp>';
 echo '</form><br>';
 
@@ -87,26 +69,22 @@ echo 'user name ='. $user_name .'<br/>';
 $statement = $db->query("SELECT id FROM user_profile WHERE name = '$user_name'");
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-if(empty($results)) {
+if(!empty($results)) {
     echo 'User Already in Exists<br/>';
 }
 
 else
 {
     echo 'User name available<br/>';
-   /* $newUser="INSERT INTO persons(Email,FirstName,LastName,PassWord) values('$_POST[eMailTxt]','$_POST[NameTxt]','$_POST[LnameTxt]','$_POST[passWordTxt]')";
-    if (mysqli_query($con,$newUser))
-    {
-        echo "You are now registered<br/>";
-    }
-    else
-    {
-        echo "Error adding user in database<br/>";
-    }*/
+    $stmt = $db->prepare('SELECT * FROM table WHERE id=:id AND name=:name');
+    $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+    $stmt->execute();
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
+?>
 
-
-   echo '         </div>
+ </div>
 
             <div class="col-3 col-s-12">
                 <div class="aside">
@@ -124,6 +102,6 @@ else
 
     </div>
 
-</body>';
-
+</body>
+</html>
 

@@ -1,58 +1,54 @@
 Create TABLE user_profile(
-    id int NOT NULL UNIQUE,
-    canvas_id VARCHAR(100),
-    name VARCHAR(20),
-    PRIMARY KEY(id)
+    id SERIAL NOT NULL PRIMARY KEY UNIQUE ,
+    password VARCHAR(20),
+    name VARCHAR(20)
 );
 
 Create TABLE class(
-    id int NOT NULL UNIQUE,
-    name VARCHAR(20),
-    PRIMARY KEY(id)
+    id SERIAL NOT NULL PRIMARY KEY UNIQUE,
+    name VARCHAR(20)
 );
 
 Create TABLE module(
-    id int NOT NULL UNIQUE,
-    name VARCHAR(20),
-    PRIMARY KEY(id)
+    id SERIAL NOT NULL PRIMARY KEY UNIQUE,
+    name VARCHAR(20)
 );
 
 CREATE TABLE note(
-    id int NOT NULL UNIQUE,
+    id SERIAL NOT NULL PRIMARY KEY UNIQUE,
     content VARCHAR(250),
-    class_id int,
-    module_id int,
-    user_id  int,
-    PRIMARY KEY(id),
+    class_id SERIAL,
+    module_id SERIAL,
+    user_id  SERIAL,
     FOREIGN KEY (module_id) REFERENCES module(id),
     FOREIGN KEY (class_id) REFERENCES class(id),
     FOREIGN KEY (user_id) REFERENCES user_profile(id)
 );
 
 CREATE TABLE user_notebook(
-    user_id  int,
-    note_id int,
+    user_id  SERIAL,
+    note_id SERIAL,
     FOREIGN KEY (user_id) REFERENCES user_profile(id),
     FOREIGN KEY (note_id) REFERENCES note(id)
 );
 
 CREATE TABLE enrollment(
-    user_id  int,
-    class_id int,
+    user_id  SERIAL,
+    class_id SERIAL,
     FOREIGN KEY (user_id) REFERENCES user_profile(id),
     FOREIGN KEY (class_id) REFERENCES class(id)
 );
 
 CREATE TABLE class_module(
-    class_id  int,
-    module_id int,
+    class_id  SERIAL,
+    module_id SERIAL,
     FOREIGN KEY (class_id) REFERENCES class(id),
     FOREIGN KEY (module_id) REFERENCES module(id)
 );
 
 CREATE TABLE module_note(
-    module_id  int,
-    note_id int,
+    module_id  SERIAL,
+    note_id SERIAL,
     FOREIGN KEY (module_id) REFERENCES module(id),
     FOREIGN KEY (note_id) REFERENCES note(id)
 );

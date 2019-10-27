@@ -56,66 +56,17 @@ require ('dbconnection.php');
         <div class="row">
             <div class="col-8 col-s-9 Form">
             <h2>INote</h2><br>
-            ';
  
- <?php           
+<?php           
 echo '<form action=INotedb.php method=POST>';
 echo 'Enter your username: (Enter: Jack)<input type=text name=user_name>';
+echo 'Enter your password: (Enter: 1234)<input type=text name=password>';
 echo '<input type=submit value="Enter">';
 echo '</form><br>';
 
 echo 'Do not have your account? <a href="SignUp.php">Click Here to Sign Up</a>';
 $user_name = $_POST['user_name'];
 
-foreach ($db->query('SELECT id, name FROM user_profile WHERE name =' .  '\'' . $user_name . '\'') as $row) {
-    echo '<strong>' . 'Your name are ' . $row['name'];
-    echo '<br/>';
-    $id = $row["id"];
-
-   
-
-    foreach ($db->query('SELECT user_id, class_id FROM enrollment WHERE user_id =' . $id) as $row) {
-        foreach ($db->query('SELECT id, name FROM class WHERE id = ' . $row['class_id']) as $row) {
-            echo 'Here are the class that you enrolling: <br>';
-            echo '<strong>' . $row['name'];
-            echo '<br/>';
-            $class_id = $row['id'];
-
-            
-
-            foreach ($db->query('SELECT class_id, module_id FROM class_module WHERE class_id =' . $class_id) as $row) {
-                foreach ($db->query('SELECT id, name FROM module WHERE id = ' . $row['module_id']) as $row) {
-                    echo 'Here are the Modules in ' . $row['name'] .': <br>';
-                    echo '<strong>' . $row['name'];
-                    echo '<br/>';
-                    $module_id =  $row['id'];
-
-                    echo '<br>Here are the notes in that ' . $row['name'] . ': <br>';
-                    foreach ($db->query('SELECT module_id, note_id FROM module_note WHERE module_id =' . $module_id) as $row) {
-                        foreach ($db->query('SELECT id, content FROM note WHERE id = ' . $row['note_id']) as $row) {
-                            echo '<strong>' . $row['content'];
-                            echo '<br/>';
-                            $note_id = $row['id'];
-
-                            foreach ($db->query('SELECT id, content, class_id, module_id, user_id FROM note WHERE id = ' . $note_id) as $noterow) {
-                                echo 'The note is own by: <br>';
-
-                                foreach ($db->query('SELECT id, name FROM user_profile WHERE id = ' . $noterow['user_id']) as $row)
-                                    echo '<strong>' . $row['name'] . '</strong><br>';
-
-                                echo 'The note is under: <br>';
-                                foreach ($db->query('SELECT id, name FROM class WHERE id = ' . $noterow['class_id']) as $row)
-                                    echo '<strong>' . $row['name'] . '</strong>';
-
-                                echo '<br/><br>';
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-}
 
 ?>
 
