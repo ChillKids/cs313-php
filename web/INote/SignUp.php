@@ -77,7 +77,7 @@ if(!empty($results)) {
 else
 {
     try{
-    $stmt = $db->prepare("INSERT INTO user_profile (name, password) VALUES ($user_name, $user_password);");
+    $stmt = $db->prepare("INSERT INTO user_profile (name, password) VALUES ('$user_name', '$user_password');");
     $stmt->bindValue(':user_password', $user_password, PDO::PARAM_STR);
     $stmt->bindValue(':user_name', $user_name, PDO::PARAM_STR);
     $stmt->execute();
