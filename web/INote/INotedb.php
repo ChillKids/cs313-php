@@ -67,7 +67,6 @@ require('dbconnection.php');
                 Do not have your account? <a href="SignUp.php">Click Here to Sign Up</a>
 
                 <?php
-                /*
                 $name = $_POST['name'];
                 $password = $_POST['password'];
 
@@ -82,7 +81,7 @@ require('dbconnection.php');
                     header("refresh:1; url=AddNote.php");
                 } else {
                     echo 'Username or Password Wrong!';
-                }*/
+                }
                 ?>
 
             </div>
@@ -90,8 +89,8 @@ require('dbconnection.php');
             <div class="col-3 col-s-12">
                 <div class="aside">
                     <h2>How?</h2>
-                    <p>1.Make sure your password is strong<br>
-                        2.Press Sign Up
+                    <p>1.Name : Jack<br>
+                        2.Password : Leung
                     </p>
                 </div>
             </div>
