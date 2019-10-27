@@ -2,13 +2,18 @@
 $name = htmlspecialchars($_POST['name']);
 $password = htmlspecialchars($_POST['password']);
 require('dbconnection.php');
+
 $statement = $db->query("SELECT id FROM user_profile WHERE name = '$name'");
                 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
                 if (!empty($results)) {
                     echo 'User Already in Exists<br/>';
+                    header("refresh:3; url=SignUp.php");
                 } else if ($name == "" || $password == "") {
                     echo 'Name and Password cannot be blank<br/>';
+                    echo 'name'. $name. '<br>';
+                    echo 'Password'. $password. '<br>';
+                    header("refresh:3; url=SignUp.php");
                 } else { 
                     try {
                         $stmt = $db->prepare("INSERT INTO user_profile (name, password) VALUES (:name, :password)");
