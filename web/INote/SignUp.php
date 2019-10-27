@@ -93,6 +93,7 @@ if($stmt != NULL) {
 
 else
 {
+    echo "User name available<br/>";
    /* $newUser="INSERT INTO persons(Email,FirstName,LastName,PassWord) values('$_POST[eMailTxt]','$_POST[NameTxt]','$_POST[LnameTxt]','$_POST[passWordTxt]')";
     if (mysqli_query($con,$newUser))
     {
