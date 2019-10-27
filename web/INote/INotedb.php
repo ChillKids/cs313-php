@@ -56,7 +56,7 @@ require('dbconnection.php');
     <div class="body">
         <div class="row">
             <div class="col-8 col-s-9 Form">
-                <h2>INote</h2><br>
+                <h2>INote Sign Up</h2><br>
 
                 <form action=INotedb.php method=POST>
                     Enter your username: (Enter: Jack)<input type=text name=name><br>
@@ -83,13 +83,13 @@ require('dbconnection.php');
                     echo 'Username or Password Wrong!';
                 }
                 ?>
-
             </div>
 
             <div class="col-3 col-s-12">
                 <div class="aside">
                     <h2>How?</h2>
-                    <p>1.Fill Up the form.<br> 2.Get your php
+                    <p>1.Make sure your password is strong<br>
+                        2.Press Sign Up
                     </p>
                 </div>
             </div>
