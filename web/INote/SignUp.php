@@ -63,11 +63,11 @@ echo 'Enter your password:<input type=text name=password><br>';
 echo '<input type=submit value=SignUp>';
 echo '</form><br>';
 
-$user_name = $_POST['user_name'];
-$user_password = $_POST['password'];
-echo 'user name ='. $user_name .'<br/>';
+$name = $_POST['name'];
+$password = $_POST['password'];
+echo 'user name ='. $name .'<br/>';
 
-$statement = $db->query("SELECT id FROM user_profile WHERE name = '$user_name'");
+$statement = $db->query("SELECT id FROM user_profile WHERE name = '$name'");
 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
 
 if(!empty($results)) {
@@ -77,9 +77,9 @@ if(!empty($results)) {
 else
 {
     try{
-    $stmt = $db->prepare("INSERT INTO user_profile (name, password) VALUES ('$user_name', '$user_password');");
-    $stmt->bindValue(':password', $user_password, PDO::PARAM_STR);
-    $stmt->bindValue(':name', $user_name, PDO::PARAM_STR);
+    $stmt = $db->prepare("INSERT INTO user_profile (name, password) VALUES (:name, :password)");
+    $stmt->bindValue(':password', $password, PDO::PARAM_STR);
+    $stmt->bindValue(':name', $name, PDO::PARAM_STR);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo 'Successfully Registor! It will redirect to the homepage in 5 sec<br/>';
