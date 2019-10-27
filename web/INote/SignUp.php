@@ -76,11 +76,12 @@ if(!empty($results)) {
 else
 {
     echo 'User name available<br/>';
+    /*
     $stmt = $db->prepare('SELECT * FROM table WHERE id=:id AND name=:name');
     $stmt->bindValue(':id', $id, PDO::PARAM_INT);
     $stmt->bindValue(':name', $name, PDO::PARAM_STR);
     $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);*/
 }
 ?>
 
@@ -89,7 +90,8 @@ else
             <div class="col-3 col-s-12">
                 <div class="aside">
                     <h2>How?</h2>
-                    <p>1.Fill Up the form.<br> 2.Get your php
+                    <p>1.Make sure your password is strong<br>
+                        2.Press Sign Up
                     </p>
                 </div>
             </div>
