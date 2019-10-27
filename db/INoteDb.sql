@@ -75,3 +75,5 @@ INSERT INTO module_note (module_id, note_id) VALUES (1, 2);
 
 INSERT INTO note (id, content, class_id, module_id, user_id) VALUES 
 (3, 'The purpose in this class is to learn php and database.', 1, 1, 1);
+
+SELECT * FROM user_profile;

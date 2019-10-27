@@ -8,12 +8,9 @@ $statement = $db->query("SELECT id FROM user_profile WHERE name = '$name'");
 
                 if (!empty($results)) {
                     echo 'User Already in Exists<br/>';
+                    echo 'THe screen will redirect in 3 sec <br/>';
                     header("refresh:3; url=SignUp.php");
-                } else if ($name == "" || $password == "") {
-                    echo 'Name and Password cannot be blank<br/>';
-                    echo 'name'. $name. '<br>';
-                    echo 'Password'. $password. '<br>';
-                    header("refresh:3; url=SignUp.php");
+                    die();
                 } else { 
                     try {
                         $stmt = $db->prepare("INSERT INTO user_profile (name, password) VALUES (:name, :password)");
@@ -22,10 +19,9 @@ $statement = $db->query("SELECT id FROM user_profile WHERE name = '$name'");
                         $stmt->execute();
                         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         echo 'Successfully Registor! It will redirect to the homepage in 5 sec<br/>';
-                        header("refresh:5; url=INotedb.php");
+                        header("refresh:3; url=INotedb.php");
                     } catch (PDOException $ex) {
                         echo 'Error!: ' . $ex->getMessage();
-                        echo 'You must filled up all the boxes';
                         die();
                     }
                 }
