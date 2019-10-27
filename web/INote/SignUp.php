@@ -78,9 +78,11 @@ echo '
             
 echo '<form action=SignUp.php method=POST>';
 echo 'Create your username:<input type=text name=user_name><br>';
+echo '<input type=submit value=SignUp>';
 echo '</form><br>';
 
 $user_name = $_POST['user_name'];
+echo 'user name ='. $user_name .'<br/>';
 
 $check= "SELECT * FROM user_profile WHERE name = '$user_name'";
 $stmt = $this->pdo->prepare($check);
