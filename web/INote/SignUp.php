@@ -59,7 +59,7 @@ require('dbconnection.php');
                 <h2>INote</h2><br>
 
                 <form action=SignUpSql.php method=POST>
-                    Create your username:<input type=text name=user_name required><br>
+                    Create your username:<input type=text name=name required><br>
                     Enter your password:<input type=text name=password required><br>
                     <input type=submit value=SignUp>
                 </form><br>
