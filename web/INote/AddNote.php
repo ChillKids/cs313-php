@@ -62,7 +62,7 @@ require('dbconnection.php');
                 $user_id = $_GET['id'];
                 $statement = $db->query("SELECT name FROM user_profile WHERE id = $user_id");
                 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-                echo 'Welcome to I-Note ' . $results[0]['name'] . '!<br>';
+                echo '<h3>Welcome to I-Note ' . $results[0]['name'] . '!</h3><br>';
                 
 echo '
                 <form action=AddNoteSql.php method=POST>
