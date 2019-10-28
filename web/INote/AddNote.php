@@ -86,9 +86,9 @@ require('dbconnection.php');
                     echo $row['content'] . '<br>';
                     $note_id = $row["note_id"];
                     echo "<form action=delete.php method=GET> 
-                    <input type='hidden' name='note_id' value=$note_id;
-                    <input type='hidden' name='user_id' value=$user_id;
-                    <button class='btn btn-secondary btn-lg btn-block'>Delete</button>
+                    <input type='hidden' name='note_id' value= $note_id;
+                    <input type='hidden' name='user_id' value= $user_id;
+                    <button type='button' class='btn btn-secondary btn-lg btn-block'>Delete</button>
                     </form>";
                 }
                 ?>
