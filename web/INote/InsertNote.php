@@ -15,13 +15,14 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $note_id = $rows->insert_id;
-    echo $note_id;
+    echo '<br>Note id:'.$note_id;
   //  $stmt = $db->prepare("INSERT INTO module_note (module_id, note_id) VALUES (:module_id, :note_id)");
   //  $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
   //  $stmt->bindValue(':note_id', $note_id, PDO::PARAM_INT);
 
-    echo 'Successfully Saved! It will redirect to note in 5 sec<br/>';
-    header("refresh:3; url=AddNode.php?id=$user_id");
+    echo 'Successfully Saved! It will redirect to note in 3 sec<br/>' . $user_id;
+
+    // header("refresh:3; url=AddNode.php?id=$user_id");
 }
 
 function addModule($db, $module_name, $user_id, $class_id, $note)
@@ -58,21 +59,21 @@ function addClass($db, $user_id, $class_name, $module_name, $note)
 try {
     $statement = $db->query("SELECT id FROM class WHERE name = '$class_name'");
     $class_id = $statement->fetchAll(PDO::FETCH_ASSOC);
-        echo "check class";
+        echo "check class<br>";
    if (!empty($class_id)) {
-    echo "class exist";
+    echo "class exist<br>";
         $statement = $db->query("SELECT id FROM module WHERE name = '$module_name'");
         $module_id = $statement->fetchAll(PDO::FETCH_ASSOC);
-        echo "check module";
+        echo "check module<br>";
         if (!empty($module_id)) {
-            echo "module exist";
+            echo "module exist<br>";
             addNote($db, $note, $user_id, $module_id[0]['id'], $class_id[0]['id']);
         } else {
-            echo "module does not exist";
+            echo "module does not exist<br>";
            // addModule($db, $module_name, $user_id, $class_id[0]['id'], $note);
         }
     } else {
-        echo "class does not exist";
+        echo "class does not exist<br>";
        // addClass($db, $user_id, $class_name, $module_name, $note);
     }
 } catch (PDOException $ex) {
