@@ -55,7 +55,7 @@ require('dbconnection.php');
 
     <div class="body">
         <div class="row">
-            <div class="col-12 col-s-9 Form">
+            <div class="col-10 col-s-9 Form">
                 <h2>INote</h2><br>
 
                 <?php
