@@ -63,19 +63,26 @@ require('dbconnection.php');
                 $statement = $db->query("SELECT name FROM user_profile WHERE id = $user_id");
                 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
                 echo '<h3>Welcome to I-Note ' . $results[0]['name'] . '!</h3><br>';
-                
-echo '
+
+                echo '
                 <form action=AddNoteSql.php method=POST>
                     <!--Textarea with icon prefix-->
-                    <input type=hidden name="user_id" value="' .$user_id .'>
+                    <input type=hidden name="user_id" value="' . $user_id . '>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Write down your note here:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Here is your notes..."></textarea>
+                        <textarea class="form-control" id="exampleFormControlTextarea1 note" rows="4" placeholder="Here is your notes..."></textarea>
                         <input type="submit" value="Add">
                     </div>
                 </form> ';
+                echo '<h3>Note List</h3>';
+                $statement = $db->query('SELECT id, class_id, module_id, content FROM note WHERE user_id = $user_id');
+                while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                    $class_name = $db->query('SELECT name FROM class WHERE id = $row["class_id"]');
+                    $module_name = $db->query('SELECT name FROM module WHERE id = $row["module_id"]');
+                    echo '<h4>' . $class_name . '</h4> | <h5>' . $module_name . '</h5><br>';
+                    echo $row['content'] . '<br>';
+                }
 
-                
 
 
                 ?>
