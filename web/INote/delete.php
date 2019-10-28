@@ -14,4 +14,6 @@ $stmt->bindValue(':note_id', $note_id, PDO::PARAM_INT);
 $stmt->execute();
 $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-header("refresh:3; url=AddNote.php?id=" . $user_id);
+echo 'Successfully Deleted<br>';
+
+header("refresh:1; url=AddNote.php?id=" . $user_id);
