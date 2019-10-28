@@ -60,7 +60,10 @@ require('dbconnection.php');
 
                 <form action=Login.php method=POST>
                     Enter your username: <input type=text name=name><br>
-                    Enter your password: <input type=text name=password><br>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <label for="inputPassword2" class="sr-only">Enter your Password:</label>
+                        <input type="password" name=password class="form-control" id="inputPassword2" placeholder="Password">
+                    </div>
                     <input type=submit value="Enter">
                 </form><br>
 
