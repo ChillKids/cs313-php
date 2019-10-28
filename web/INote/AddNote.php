@@ -1,5 +1,4 @@
-<?php
-require('dbconnection.php');
+
 ?>
 
 <!DOCTYPE html>
@@ -84,6 +83,11 @@ require('dbconnection.php');
                     $module_name = $stmt->fetch(PDO::FETCH_ASSOC);
                     echo '<h4>' . $class_name['name'] . ' | ' . $module_name['name'] . '</h4>';
                     echo $row['content'] . '<br>';
+                    $note_id = $row["note_id"];
+                    echo "<form action=delete.php method=GET> 
+                    <input type='hidden' name='note_id' value=$note_id;
+                    <input type='hidden' name='user_id' value=$user_id;
+                    <input type=subimt class='btn btn-secondary btn-lg btn-block' value=Delete></form>";
                 }
                 ?>
                 </div>
