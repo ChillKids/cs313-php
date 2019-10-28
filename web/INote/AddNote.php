@@ -55,7 +55,7 @@ require('dbconnection.php');
 
     <div class="body">
         <div class="row">
-            <div class="col-8 col-s-9 Form">
+            <div class="col-12 col-s-9 Form">
                 <h2>INote</h2><br>
 
                 <?php
@@ -76,14 +76,6 @@ echo '
                 </form> ';
                 ?>
 
-            </div>
-
-            <div class="col-3 col-s-12">
-                <div class="aside">
-                    <h2>How?</h2>
-                    <p>1.Fill Up the form.<br> 2.Get your php
-                    </p>
-                </div>
             </div>
         </div>
 
