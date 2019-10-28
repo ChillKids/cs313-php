@@ -18,4 +18,4 @@ $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 echo 'Successfully Deleted<br>';
 
-header("url=AddNote.php?id=" . $user_id);
+header("Location:=AddNote.php?id=" . $user_id);
