@@ -58,7 +58,7 @@ require('dbconnection.php');
     <div class="body">
         <div class="row">
             <div class="col-8 col-s-9 Form">
-                <h2>INote Login</h2><br>
+                <h2>INote Insert</h2><br>
 <?php
                 echo "
                 <form action=InsertNote.php method=POST>
