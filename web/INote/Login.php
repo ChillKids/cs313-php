@@ -10,9 +10,8 @@ require ('dbconnection.php');
                 $id = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
                 if (!empty($id)) {
-                    echo 'login successfully! id:';
-                    echo $id;
-                    header("refresh:1; url=AddNote.php?id=$id[0]");
+                    echo 'login successfully!';
+                    header("refresh:1; url=AddNote.php?id=" . $id['id']);
                 } else {
                     echo 'Username or Password Wrong!';
                     header("refresh:1; url=INotedb.php");
