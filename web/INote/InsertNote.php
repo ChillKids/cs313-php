@@ -20,10 +20,11 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
     $stmt = $db->prepare("INSERT INTO module_note (module_id, note_id) VALUES (:module_id, :note_id)");
     $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
     $stmt->bindValue(':note_id', $note_id, PDO::PARAM_INT);
+    $stmt->execute();
+    $stmt->fetchAll(PDO::FETCH_ASSOC);
+    echo 'Successfully Saved! It will redirect to note in 3 sec<br/>';
 
-    echo 'Successfully Saved! It will redirect to note in 3 sec<br/>' . $user_id;
-
-    // header("refresh:3; url=AddNode.php?id=".$user_id);
+    header("refresh:3; url=AddNode.php?id=".$user_id);
 }
 
 function addModule($db, $module_name, $user_id, $class_id, $note)
@@ -37,7 +38,8 @@ function addModule($db, $module_name, $user_id, $class_id, $note)
     $stmt = $db->prepare("INSERT INTO class_module (module_id, class_id) VALUES (:module_id, :class_id)");
     $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
     $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
-
+    $stmt->execute();
+    $stmt->fetchAll(PDO::FETCH_ASSOC);
     addNote($db, $note, $user_id, $module_id, $class_id);
 }
 
@@ -53,7 +55,8 @@ function addClass($db, $user_id, $class_name, $module_name, $note)
     $stmt = $db->prepare("INSERT INTO enrollment (class_id, user_id) VALUES (:class_id, :user_id)");
     $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
     $stmt->bindValue(':note_id', $user_id, PDO::PARAM_INT);
-
+    $stmt->execute();
+    $stmt->fetchAll(PDO::FETCH_ASSOC);
     addModule($db, $module_name, $user_id, $class_id, $note);
 }
 
