@@ -83,9 +83,7 @@ require('dbconnection.php');
                     $stmt = $db->query('SELECT name FROM module WHERE id =' . $row["module_id"]);
                     $module_name = $stmt->fetch(PDO::FETCH_ASSOC);
                     echo '<h4>' . $class_name['name'] . ' | ' . $module_name['name'] . '</h4>';
-                    foreach($row['content'] as $line){
-                        echo $line . "<br>";
-                    }
+                    echo $row['content'] . '<br>';
                     $note_id = $row["id"];
 
                     echo "<form action=delete.php method=GET id='delete$note_id'> 
