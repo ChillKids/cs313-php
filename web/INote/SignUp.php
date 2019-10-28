@@ -59,8 +59,15 @@ require('dbconnection.php');
                 <h2>INote Sign Up</h2><br>
 
                 <form action=SignUpSql.php method=POST>
-                    Create your username:<input type=text name=name required><br>
-                    Enter your password:<input type=text name=password required><br>
+                <div class="form-group">
+                        <label for="UserName">Create Your User Name:</label>
+                        <input type="text" class="form-control" id="username" name=name placeholder="Enter username">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Create Password</label>
+                        <input type="password" name=password class="form-control" id="password" placeholder="Password">
+                        <small id="pwRemind" class="form-text text-muted">Make sure your password is strong.</small>
+                    </div>
                     <input type=submit value=SignUp>
                 </form><br>
             </div>

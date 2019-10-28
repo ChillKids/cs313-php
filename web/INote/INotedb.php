@@ -62,7 +62,6 @@ require('dbconnection.php');
                     <div class="form-group">
                         <label for="UserName">User Name:</label>
                         <input type="text" class="form-control" id="username" name=name placeholder="Enter username">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Password</label>
