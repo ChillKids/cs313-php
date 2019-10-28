@@ -59,10 +59,14 @@ require('dbconnection.php');
                 <h2>INote Login</h2><br>
 
                 <form action=Login.php method=POST>
-                    Enter your username: <input type=text name=name><br>
-                    <div class="form-group mx-sm-3 mb-2">
-                        <label for="inputPassword2" class="sr-only">Enter your Password:</label>
-                        <input type="password" name=password class="form-control" id="inputPassword2" placeholder="Password">
+                    <div class="form-group">
+                        <label for="UserName">User Name:</label>
+                        <input type="text" class="form-control" id="username" name=name placeholder="Enter username">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" name=password class="form-control" id="password" placeholder="Password">
                     </div>
                     <input type=submit value="Enter">
                 </form><br>
