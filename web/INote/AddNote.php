@@ -85,6 +85,8 @@ require('dbconnection.php');
                     echo '<h4>' . $class_name['name'] . ' | ' . $module_name['name'] . '</h4>';
                     echo $row['content'] . '<br>';
                     $note_id = $row["id"];
+                    echo $row['id'] . '<br>';
+
                     echo "<form action=delete.php method=GET id='delete'> 
                     <input type='hidden' name='note_id' value=". $note_id .">
                     <input type='hidden' name='user_id' value=". $user_id .">
