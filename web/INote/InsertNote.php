@@ -41,6 +41,7 @@ function addModule($db, $module_name, $user_id, $class_id, $note)
     $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
     $stmt->execute();
     $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
     addNote($db, $note, $user_id, $module_id, $class_id);*/
 }
 
