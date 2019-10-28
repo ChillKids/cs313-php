@@ -1,4 +1,5 @@
 <?php
+require ('dbconnection.php');
                 $name = htmlspecialchars($_POST['name']);
                 $password = htmlspecialchars($_POST['password']);
 
@@ -8,11 +9,11 @@
                 $stmt->execute();
                 $id = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 echo $id . 'login successfully!';
-/*
+
                 if (!empty($id)) {
                     echo $id. 'login successfully!';
                     header("refresh:1; url=AddNote.php");
                 } else {
                     echo 'Username or Password Wrong!';
                     header("refresh:1; url=INotedb.php");
-                }*/
+                }
