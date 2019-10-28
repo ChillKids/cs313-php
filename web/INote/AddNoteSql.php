@@ -1,6 +1,6 @@
 <?php
-$note = htmlspecialchars($_POST['note']);
-$user_id = $_POST['user_id'];
+$note = htmlspecialchars($_GET['note']);
+$user_id = $_GET['user_id'];
 require('dbconnection.php');
 ?>
 
@@ -63,7 +63,7 @@ require('dbconnection.php');
                 echo "
                 <form action=InsertNote.php method=POST>
                     <input type=hidden name=user_id value='$user_id'>
-                    <input type=hidden name=content value='$note'>
+                    <input type=hidden name=note value='$note'>
                     What class does this note belong to? <input type=text name=class_name>
                     What module is this? <input type=text name=module_name>
 

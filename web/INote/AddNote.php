@@ -69,7 +69,7 @@ require('dbconnection.php');
                     <input type=hidden name="user_id" value="' . $user_id . '>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Write down your note here:</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1 note" rows="4" placeholder="Here is your notes..."></textarea>
+                        <textarea name="note" class="form-control" id="exampleFormControlTextarea1 note" rows="4" placeholder="Here is your notes..."></textarea>
                         <input type="submit" value="Add">
                     </div>
                 </form> ';

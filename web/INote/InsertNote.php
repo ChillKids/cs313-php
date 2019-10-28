@@ -1,27 +1,86 @@
 <?php
 $note = htmlspecialchars($_POST['note']);
+$class_name = htmlspecialchars($_POST['class_name']);
+$module_name = htmlspecialchars($_POST['module_name']);
 $user_id = $_POST['user_id'];
 require('dbconnection.php');
 
-$statement = $db->query("SELECT id FROM class WHERE name = '$class_name'");
-$results = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-if (!empty($results)) {
-    echo 'User Already in Exists<br/>';
-    echo 'THe screen will redirect in 3 sec <br/>';
-    header("refresh:3; url=SignUp.php");
-    die();
-} else {
+function addNote($db, $note, $user_id, $module_id, $class_id)
+{
     try {
-        $stmt = $db->prepare("INSERT INTO user_profile (name, password) VALUES (:name, :password)");
-        $stmt->bindValue(':password', $password, PDO::PARAM_STR);
-        $stmt->bindValue(':name', $name, PDO::PARAM_STR);
+        $stmt = $db->prepare("INSERT INTO note (content, class_id, module_id, user_id) VALUES (:content ,:class_id, :module_id, :user_id)");
+        $stmt->bindValue(':content', $note, PDO::PARAM_STR);
+        $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
+        $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
         $stmt->execute();
         $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-        echo 'Successfully Registor! It will redirect to the homepage in 5 sec<br/>';
-        header("refresh:3; url=INotedb.php");
+        $note_id = $rows->insert_id;
+
+        $stmt = $db->prepare("INSERT INTO module_note (module_id, note_id) VALUES (:module_id, :note_id)");
+        $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
+        $stmt->bindValue(':note_id', $note_id, PDO::PARAM_INT);
+
+        echo 'Successfully Saved! It will redirect to note in 5 sec<br/>';
+        header("refresh:3; url=AddNode.php?id='$user_id'");
     } catch (PDOException $ex) {
         echo 'Error!: ' . $ex->getMessage();
         die();
     }
-}?>
+}
+
+function addModule($db, $module_name, $user_id, $class_id, $note)
+{
+    try {
+        $stmt = $db->prepare("INSERT INTO class (name) VALUES (:name)");
+        $stmt->bindValue(':name', $module_name, PDO::PARAM_STR);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $module_id = $rows->insert_id;
+
+        $stmt = $db->prepare("INSERT INTO class_module (module_id, class_id) VALUES (:module_id, :class_id)");
+        $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
+        $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
+
+        addNote($db, $note, $user_id, $module_id, $class_id);
+    } catch (PDOException $ex) {
+        echo 'Error!: ' . $ex->getMessage();
+        die();
+    }
+}
+
+function addClass($db, $user_id, $class_name, $module_name, $note)
+{
+    try {
+        $stmt = $db->prepare("INSERT INTO class (name) VALUES (:class_name)");
+        $stmt->bindValue(':class_name', $class_name, PDO::PARAM_STR);
+        $stmt->execute();
+        $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $class_id = $rows->insert_id;
+
+        $stmt = $db->prepare("INSERT INTO enrollment (class_id, user_id) VALUES (:class_id, :user_id)");
+        $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
+        $stmt->bindValue(':note_id', $user_id, PDO::PARAM_INT);
+
+        addModule($db, $module_name, $user_id, $class_id, $note);
+    } catch (PDOException $ex) {
+        echo 'Error!: ' . $ex->getMessage();
+        die();
+    }
+}
+
+$statement = $db->query("SELECT id FROM class WHERE name = '$class_name'");
+$class_id = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+if (!empty($class_id)) {
+    $statement = $db->query("SELECT id FROM module WHERE name = '$module_name'");
+    $module_id = $statement->fetchAll(PDO::FETCH_ASSOC);
+
+    if (!empty($module_id)) {
+        addNote($db, $note, $user_id, $module_id[0]['id'], $class_id[0]['id']);
+    } else {
+        addModule($db, $module_name, $user_id, $class_id[0]['id'], $note);
+    }
+} else {
+    addClass($db, $user_id, $class_name, $module_name, $note);
+}
