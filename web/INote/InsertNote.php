@@ -17,9 +17,9 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
     $note_id = $db->lastInsertId();
 
     echo 'Note id:'.$note_id.'<br>';
-  //  $stmt = $db->prepare("INSERT INTO module_note (module_id, note_id) VALUES (:module_id, :note_id)");
-  //  $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
-  //  $stmt->bindValue(':note_id', $note_id, PDO::PARAM_INT);
+    $stmt = $db->prepare("INSERT INTO module_note (module_id, note_id) VALUES (:module_id, :note_id)");
+    $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
+    $stmt->bindValue(':note_id', $note_id, PDO::PARAM_INT);
 
     echo 'Successfully Saved! It will redirect to note in 3 sec<br/>' . $user_id;
 
