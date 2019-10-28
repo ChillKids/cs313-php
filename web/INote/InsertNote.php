@@ -16,7 +16,7 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
     $stmt->fetchAll(PDO::FETCH_ASSOC);
     $note_id = $db->lastInsertId();
 
-    echo 'Note id:' . $note_id . '<br>';
+ //   echo 'Note id:' . $note_id . '<br>';
     $stmt = $db->prepare("INSERT INTO module_note (module_id, note_id) VALUES (:module_id, :note_id)");
     $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
     $stmt->bindValue(':note_id', $note_id, PDO::PARAM_INT);
@@ -24,7 +24,7 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
     $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo 'Successfully Saved! It will redirect to note in 3 sec<br/>';
 
-  //  header("refresh:3; url=AddNote.php?id=" . $user_id);
+    header("refresh:3; url=AddNote.php?id=" . $user_id);
 }
 
 function addModule($db, $module_name, $user_id, $class_id, $note)
@@ -35,7 +35,7 @@ function addModule($db, $module_name, $user_id, $class_id, $note)
     $stmt->fetchAll(PDO::FETCH_ASSOC);
     $module_id = $db->lastInsertId();
 
-    echo 'modudle id:' . $module_id . '<br>';
+ //   echo 'modudle id:' . $module_id . '<br>';
 
     $stmt = $db->prepare("INSERT INTO class_module (class_id, module_id) VALUES (:class_id, :module_id)");
     $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
@@ -54,7 +54,7 @@ function addClass($db, $user_id, $class_name, $module_name, $note)
     $stmt->fetchAll(PDO::FETCH_ASSOC);
     $class_id = $db->lastInsertId();
 
-    echo 'class id:' . $class_id . '<br>';
+  //  echo 'class id:' . $class_id . '<br>';
     $stmt = $db->prepare("INSERT INTO enrollment (class_id, user_id) VALUES (:class_id, :user_id)");
     $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
     $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
@@ -66,7 +66,7 @@ function addClass($db, $user_id, $class_name, $module_name, $note)
 try {
     $statement = $db->query("SELECT id FROM class WHERE name = '$class_name'");
     $class_id = $statement->fetchAll(PDO::FETCH_ASSOC);
-      echo "check class<br>";
+    //  echo "check class<br>";
     if (!empty($class_id)) {
         // echo "class exist<br>";
         $statement = $db->query("SELECT id FROM module WHERE name = '$module_name'");
@@ -80,7 +80,7 @@ try {
             addModule($db, $module_name, $user_id, $class_id[0]['id'], $note);
         }
     } else {
-             echo "class does not exist<br>";
+          //   echo "class does not exist<br>";
          addClass($db, $user_id, $class_name, $module_name, $note);
     }
 } catch (PDOException $ex) {
