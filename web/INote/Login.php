@@ -11,7 +11,7 @@ require ('dbconnection.php');
 
                 if (!empty($id)) {
                     echo 'login successfully! id:';
-                    echo $id[0];
+                    echo $id;
                     header("refresh:1; url=AddNote.php?id=$id[0]");
                 } else {
                     echo 'Username or Password Wrong!';
