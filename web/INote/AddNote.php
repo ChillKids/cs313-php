@@ -80,9 +80,10 @@ require('dbconnection.php');
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     $stmt = $db->query('SELECT name FROM class WHERE id =' . $row["class_id"]);
                     $class_name = $stmt->fetch(PDO::FETCH_ASSOC);
-                 //   $module_name = $db->query('SELECT name FROM module WHERE id =' . $row["module_id"]);
-                 //   echo '<h4>' . $class_name[0] . '</h4> | <h5>' . $module_name[0] . '</h5><br>';
-                    echo $row['content'] .$row["class_id"] . $class_name['name'] . $row["module_id"]. '<br>';
+                    $stmt = $db->query('SELECT name FROM module WHERE id =' . $row["module_id"]);
+                    $module_name = $stmt->fetch(PDO::FETCH_ASSOC);
+                    echo '<h4>' . $class_name['name'] . '</h4> | <h5>' . $module_name['name'] . '</h5><br>';
+                    echo $row['content'] . '<br>';
                 }
                 ?>
                 </div>
