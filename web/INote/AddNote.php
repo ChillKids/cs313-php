@@ -76,12 +76,12 @@ require('dbconnection.php');
 
                 echo '<div class="col-11 col-s-9 Form"> <h3>Note List</h3>';
                 
-                $statement = $db->query('SELECT id, class_id, module_id, content FROM note WHERE user_id = $user_id');
+                $statement = $db->query('SELECT id, class_id, module_id, content FROM note WHERE user_id ='.$user_id);
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     $class_name = $db->query('SELECT name FROM class WHERE id =' . $row["class_id"]);
                     $module_name = $db->query('SELECT name FROM module WHERE id =' . $row["module_id"]);
                     echo '<h4>' . $class_name[0]['name'] . '</h4> | <h5>' . $module_name[0]['name'] . '</h5><br>';
-                    echo $row[0]['content'] . '<br>';
+                    echo $row['content'] . '<br>';
                 }
                 ?>
                 </div>
