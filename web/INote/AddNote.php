@@ -75,8 +75,8 @@ require('dbconnection.php');
                     </div>
                     <div class="form-group">
                         <label for="">Write down Your note:</label>
-                        <label for="exampleFormControlTextarea1">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                        <label for="exampleFormControlTextarea1">Write down your note here:</label>
+                        <input type="textarea" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Here is your notes...">
                     </div>
                 </form>
 
