@@ -33,14 +33,15 @@ function addModule($db, $module_name, $user_id, $class_id, $note)
     $stmt->bindValue(':name', $module_name, PDO::PARAM_STR);
     $stmt->execute();
     $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $module_id = $db->lastInsertId();
-
-    $stmt = $db->prepare("INSERT INTO class_module (module_id, class_id) VALUES (:module_id, :class_id)");
+   $module_id = $db->lastInsertId();
+   
+    echo 'modudle id:' . $module_id . '<br>';
+    /*$stmt = $db->prepare("INSERT INTO class_module (module_id, class_id) VALUES (:module_id, :class_id)");
     $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
     $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
     $stmt->execute();
     $stmt->fetchAll(PDO::FETCH_ASSOC);
-    addNote($db, $note, $user_id, $module_id, $class_id);
+    addNote($db, $note, $user_id, $module_id, $class_id);*/
 }
 
 function addClass($db, $user_id, $class_name, $module_name, $note)
