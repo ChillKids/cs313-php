@@ -57,7 +57,7 @@ function addClass($db, $user_id, $class_name, $module_name, $note)
     echo 'class id:' . $class_id . '<br>';
     $stmt = $db->prepare("INSERT INTO enrollment (class_id, user_id) VALUES (:class_id, :user_id)");
     $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
-    $stmt->bindValue(':note_id', $user_id, PDO::PARAM_INT);
+    $stmt->bindValue(':user_id', $user_id, PDO::PARAM_INT);
     $stmt->execute();
     $stmt->fetchAll(PDO::FETCH_ASSOC);
     addModule($db, $module_name, $user_id, $class_id, $note);
