@@ -66,7 +66,7 @@ try {
         echo "check module";
         if (!empty($module_id)) {
             echo "module exist";
-           // addNote($db, $note, $user_id, $module_id[0]['id'], $class_id[0]['id']);
+            addNote($db, $note, $user_id, $module_id[0]['id'], $class_id[0]['id']);
         } else {
             echo "module does not exist";
            // addModule($db, $module_name, $user_id, $class_id[0]['id'], $note);
