@@ -58,9 +58,9 @@ INSERT INTO user_profile (name, password) VALUES ('Jack', '1234');
 INSERT INTO class (id, name) VALUES (1, 'CS313');
 INSERT INTO module (id, name) VALUES (1, 'Week01');
 INSERT INTO note (id, content, class_id, module_id, user_id) VALUES 
-(1, 'Intro to web engineering: Dont forget to submit your hw on time', 1, 1, 1);
-INSERT INTO user_notebook (user_id, note_id) VALUES (1, 1);
-INSERT INTO enrollment (user_id, class_id) VALUES (1, 1);
+(1, 'Intro to web engineering: Dont forget to submit your hw on time', 1, 1, 8);
+INSERT INTO user_notebook (user_id, note_id) VALUES (8, 1);
+INSERT INTO enrollment (user_id, class_id) VALUES (8, 1);
 INSERT INTO class_module (class_id, module_id) VALUES (1, 1);
 INSERT INTO module_note (module_id, note_id) VALUES (1, 1);
 

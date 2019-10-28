@@ -73,8 +73,10 @@ require('dbconnection.php');
                         <textarea class="form-control" id="exampleFormControlTextarea1 note" rows="4" placeholder="Here is your notes..."></textarea>
                         <input type="submit" value="Add">
                     </div>
-                </form> ';
-                echo '<h3>Note List</h3>';
+                </form> ';?>
+                
+                <h3>Note List</h3>
+                <?php
                 $statement = $db->query('SELECT id, class_id, module_id, content FROM note WHERE user_id = $user_id');
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     $class_name = $db->query('SELECT name FROM class WHERE id = $row["class_id"]');
@@ -82,9 +84,6 @@ require('dbconnection.php');
                     echo '<h4>' . $class_name . '</h4> | <h5>' . $module_name . '</h5><br>';
                     echo $row['content'] . '<br>';
                 }
-
-
-
                 ?>
 
 
