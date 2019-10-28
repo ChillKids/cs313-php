@@ -16,7 +16,7 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     $note_id = $stmt->insert_id;
 
-    echo '<br>Note id:'.$note_id;
+    echo 'Note id:'.$note_id.'<br>';
   //  $stmt = $db->prepare("INSERT INTO module_note (module_id, note_id) VALUES (:module_id, :note_id)");
   //  $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
   //  $stmt->bindValue(':note_id', $note_id, PDO::PARAM_INT);
