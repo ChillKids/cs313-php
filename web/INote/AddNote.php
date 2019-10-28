@@ -56,6 +56,7 @@ require ('dbconnection.php');
         <div class="row">
             <div class="col-8 col-s-9 Form">
             <h2>INote</h2><br>
+            Welcome to I-Note! 
  <?php
  
  ?>

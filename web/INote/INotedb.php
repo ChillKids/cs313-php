@@ -58,31 +58,13 @@ require('dbconnection.php');
             <div class="col-8 col-s-9 Form">
                 <h2>INote Login</h2><br>
 
-                <form action=INotedb.php method=POST>
+                <form action=Login.php method=POST>
                     Enter your username: (Enter: Jack)<input type=text name=name><br>
                     Enter your password: (Enter: Leung)<input type=text name=password><br>
                     <input type=submit value="Enter">
                 </form><br>
 
                 Do not have your account? <a href="SignUp.php">Click Here to Sign Up</a>
-
-                <?php
-                $name = $_POST['name'];
-                $password = $_POST['password'];
-
-                $stmt = $db->prepare("SELECT id FROM user_profile WHERE (name = :password AND password = :password) ");
-                $stmt->bindValue(':password', $password, PDO::PARAM_STR);
-                $stmt->bindValue(':name', $name, PDO::PARAM_STR);
-                $stmt->execute();
-                $id = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-                if (!empty($id)) {
-                    echo 'login successfully!';
-                    header("refresh:1; url=AddNote.php");
-                } else {
-                    echo 'Username or Password Wrong!';
-                }
-                ?>
 
             </div>
 
