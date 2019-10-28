@@ -55,7 +55,7 @@ require('dbconnection.php');
 
     <div class="body">
         <div class="row">
-            <div class="col-11 col-s-9">
+            <div class="col-11 col-s-9 Form">
                 <h2>INote</h2><br>
 
                 <?php
@@ -66,7 +66,6 @@ require('dbconnection.php');
 
                 echo '
                 <form action=AddNoteSql.php method=GET>
-                    <!--Textarea with icon prefix-->
                     <input type=hidden name="user_id" value="' . $user_id . '>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Write down your note here:</label>
