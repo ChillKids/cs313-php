@@ -13,7 +13,7 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
     $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
     $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
     $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $stmt->fetchAll(PDO::FETCH_ASSOC);
     $note_id = $db->lastInsertId();
 
     echo 'Note id:'.$note_id.'<br>';
@@ -31,8 +31,8 @@ function addModule($db, $module_name, $user_id, $class_id, $note)
     $stmt = $db->prepare("INSERT INTO class (name) VALUES (:name)");
     $stmt->bindValue(':name', $module_name, PDO::PARAM_STR);
     $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $module_id = $rows->insert_id;
+    $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $module_id = $db->lastInsertId();
 
     $stmt = $db->prepare("INSERT INTO class_module (module_id, class_id) VALUES (:module_id, :class_id)");
     $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
@@ -47,8 +47,8 @@ function addClass($db, $user_id, $class_name, $module_name, $note)
     $stmt = $db->prepare("INSERT INTO class (name) VALUES (:class_name)");
     $stmt->bindValue(':class_name', $class_name, PDO::PARAM_STR);
     $stmt->execute();
-    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    $class_id = $rows->insert_id;
+    $stmt->fetchAll(PDO::FETCH_ASSOC);
+    $class_id = $db->lastInsertId();
 
     $stmt = $db->prepare("INSERT INTO enrollment (class_id, user_id) VALUES (:class_id, :user_id)");
     $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
