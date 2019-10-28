@@ -88,7 +88,8 @@ require('dbconnection.php');
                     echo "<form action=delete.php method=GET> 
                     <input type='hidden' name='note_id' value=$note_id;
                     <input type='hidden' name='user_id' value=$user_id;
-                    <input type=subimt class='btn btn-secondary btn-lg btn-block' value=Delete></form>";
+                    <button class='btn btn-secondary btn-lg btn-block'>Delete</button>
+                    </form>";
                 }
                 ?>
                 </div>
