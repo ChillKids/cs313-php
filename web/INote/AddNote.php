@@ -57,17 +57,20 @@ require('dbconnection.php');
         <div class="row">
             <div class="col-8 col-s-9 Form">
                 <h2>INote</h2><br>
-                Welcome to I-Note!
                 <?php
-
+                $user_id = $_GET['id']; 
+                $statement = $db->query("SELECT name FROM user_profile WHERE id = $user_id");
+                $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+                echo 'Welcome to I-Note '. $results. '!<br>';
                 ?>
                 <form action=SignUpSql.php method=POST>
                     <!--Textarea with icon prefix-->
+                    <label for="form22">Write down Your note:</label>
                     <div class="md-form amber-textarea active-amber-textarea">
                         <i class="fas fa-pencil-alt prefix"></i>
-                        <textarea id="form22" class="md-textarea form-control" rows="3"></textarea>
-                        <label for="form22">Write down Your note:</label>
+                        <input type=textarea id="form22" class="md-textarea form-control" rows="3">
                     </div>
+
                 </form>
 
             </div>
