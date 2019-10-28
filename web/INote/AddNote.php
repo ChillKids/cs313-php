@@ -57,23 +57,27 @@ require('dbconnection.php');
         <div class="row">
             <div class="col-8 col-s-9 Form">
                 <h2>INote</h2><br>
-                
+
                 <?php
-                $user_id = $_GET['id']; 
+                $user_id = $_GET['id'];
                 $statement = $db->query("SELECT name FROM user_profile WHERE id = $user_id");
                 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-                echo 'Welcome to I-Note '. $results[0]['name']. '!<br>';
+                echo 'Welcome to I-Note ' . $results[0]['name'] . '!<br>';
                 ?>
 
                 <form action=AddNoteSql.php method=POST>
                     <!--Textarea with icon prefix-->
-                    <input type=hidden name="user_id" value=$user_id> 
+                    <input type=hidden name="user_id" value=$user_id>
                     <label for="form22">Write down Your note:</label>
                     <div class="md-form amber-textarea active-amber-textarea">
                         <i class="fas fa-pencil-alt prefix"></i>
-                        <input type=textarea id="note" class="md-textarea form-control" name="note" rows="5" >
+                        <input type=textarea id="note" class="md-textarea form-control" name="note" rows="5">
                     </div>
-
+                    <div class="form-group">
+                        <label for="">Write down Your note:</label>
+                        <label for="exampleFormControlTextarea1">Example textarea</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
+                    </div>
                 </form>
 
             </div>
