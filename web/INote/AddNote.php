@@ -55,7 +55,7 @@ require('dbconnection.php');
 
     <div class="body">
         <div class="row">
-            <div class="col-11 col-s-9 Form">
+            <div class="col-11 col-s-9">
                 <h2>INote</h2><br>
 
                 <?php
@@ -74,7 +74,7 @@ require('dbconnection.php');
                         <input type="submit" value="Add">
                     </div>
                 </form> ';
-                
+
                 echo '<h3>Note List</h3>';
                 
                 $statement = $db->query('SELECT id, class_id, module_id, content FROM note WHERE user_id = $user_id');
@@ -82,12 +82,9 @@ require('dbconnection.php');
                     $class_name = $db->query('SELECT name FROM class WHERE id =' . $row["class_id"]);
                     $module_name = $db->query('SELECT name FROM module WHERE id =' . $row["module_id"]);
                     echo '<h4>' . $class_name[0]['name'] . '</h4> | <h5>' . $module_name[0]['name'] . '</h5><br>';
-                    echo $row['content'] . '<br>';
+                    echo $row[0]['content'] . '<br>';
                 }
                 ?>
-
-
-
             </div>
         </div>
 
