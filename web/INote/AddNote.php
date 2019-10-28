@@ -66,7 +66,7 @@ require('dbconnection.php');
 
                 echo '
                 <form action=AddNoteSql.php method=GET>
-                    <input type=hidden name="user_id" value="' . $user_id . '>
+                    <input type=hidden name="user_id" value=' . $user_id . '>
                     <div class="form-group">
                         <label for="exampleFormControlTextarea1">Write down your note here:</label>
                         <textarea name="note" class="form-control" id="exampleFormControlTextarea1 note" rows="4" placeholder="Here is your notes..."></textarea>
