@@ -62,15 +62,16 @@ require('dbconnection.php');
                 $user_id = $_GET['id']; 
                 $statement = $db->query("SELECT name FROM user_profile WHERE id = $user_id");
                 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-                echo 'Welcome to I-Note '. $results. '!<br>';
+                echo 'Welcome to I-Note '. $results[0]['name']. '!<br>';
                 ?>
 
-                <form action=SignUpSql.php method=POST>
+                <form action=AddNoteSql.php method=POST>
                     <!--Textarea with icon prefix-->
+                    <input type=hidden name="user_id" value=$user_id> 
                     <label for="form22">Write down Your note:</label>
                     <div class="md-form amber-textarea active-amber-textarea">
                         <i class="fas fa-pencil-alt prefix"></i>
-                        <input type=textarea id="form22" class="md-textarea form-control" rows="3">
+                        <input type=textarea id="note" class="md-textarea form-control" name="note" rows="5" >
                     </div>
 
                 </form>

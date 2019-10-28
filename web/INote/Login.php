@@ -12,7 +12,9 @@ require ('dbconnection.php');
                 if (!empty($row)) {
                     echo 'login successfully!';
                     header("refresh:1; url=AddNote.php?id=" . $row[0]['id']);
+                    die();
                 } else {
                     echo 'Username or Password Wrong!';
                     header("refresh:1; url=INotedb.php");
+                    die();
                 }
