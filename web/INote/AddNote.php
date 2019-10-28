@@ -74,7 +74,7 @@ require('dbconnection.php');
                     </div>
                 </form> ';
 
-                echo '<h3>Note List</h3>';
+                echo '<div class="col-11 col-s-9 Form"> <h3>Note List</h3>';
                 
                 $statement = $db->query('SELECT id, class_id, module_id, content FROM note WHERE user_id = $user_id');
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
@@ -84,6 +84,7 @@ require('dbconnection.php');
                     echo $row[0]['content'] . '<br>';
                 }
                 ?>
+                </div>
             </div>
         </div>
 
