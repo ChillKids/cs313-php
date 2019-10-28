@@ -58,18 +58,18 @@ try {
     $statement = $db->query("SELECT id FROM class WHERE name = '$class_name'");
     $class_id = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-  /*  if (!empty($class_id)) {
+   if (!empty($class_id)) {
         $statement = $db->query("SELECT id FROM module WHERE name = '$module_name'");
         $module_id = $statement->fetchAll(PDO::FETCH_ASSOC);
 
         if (!empty($module_id)) {
-            addNote($db, $note, $user_id, $module_id[0]['id'], $class_id[0]['id']);
+           // addNote($db, $note, $user_id, $module_id[0]['id'], $class_id[0]['id']);
         } else {
-            addModule($db, $module_name, $user_id, $class_id[0]['id'], $note);
+           // addModule($db, $module_name, $user_id, $class_id[0]['id'], $note);
         }
     } else {
-        addClass($db, $user_id, $class_name, $module_name, $note);
-    }*/
+       // addClass($db, $user_id, $class_name, $module_name, $note);
+    }
 } catch (PDOException $ex) {
     echo 'Error!: ' . $ex->getMessage();
     die();

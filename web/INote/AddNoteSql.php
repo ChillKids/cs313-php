@@ -64,8 +64,8 @@ require('dbconnection.php');
                 <form action=InsertNote.php method=POST>
                     <input type=hidden name=user_id value='$user_id'>
                     <input type=hidden name=note value='$note'>
-                    What class does this note belong to? <input type=text name=class_name>
-                    What module is this? <input type=text name=module_name>
+                    What class does this note belong to? <input type=text name=class_name required>
+                    What module is this? <input type=text name=module_name required>
 
                     <input type=submit value=Enter>
                 </form><br>";
