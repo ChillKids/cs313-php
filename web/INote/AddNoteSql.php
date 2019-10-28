@@ -75,10 +75,8 @@ require('dbconnection.php');
 
             <div class="col-3 col-s-12">
                 <div class="aside">
-                    <h2>How?</h2>
-                    <p>1.Name : Jack<br>
-                        2.Password : Leung
-                    </p>
+                    <h2>Your Note:</h2>
+                    <?php echo $note?>
                 </div>
             </div>
         </div>
