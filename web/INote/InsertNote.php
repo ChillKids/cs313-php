@@ -54,20 +54,25 @@ function addClass($db, $user_id, $class_name, $module_name, $note)
 
     addModule($db, $module_name, $user_id, $class_id, $note);
 }
+
 try {
     $statement = $db->query("SELECT id FROM class WHERE name = '$class_name'");
     $class_id = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+        echo "check class";
    if (!empty($class_id)) {
+    echo "class exist";
         $statement = $db->query("SELECT id FROM module WHERE name = '$module_name'");
         $module_id = $statement->fetchAll(PDO::FETCH_ASSOC);
-
+        echo "check module";
         if (!empty($module_id)) {
+            echo "module exist";
            // addNote($db, $note, $user_id, $module_id[0]['id'], $class_id[0]['id']);
         } else {
+            echo "module does not exist";
            // addModule($db, $module_name, $user_id, $class_id[0]['id'], $note);
         }
     } else {
+        echo "class does not exist";
        // addClass($db, $user_id, $class_name, $module_name, $note);
     }
 } catch (PDOException $ex) {
