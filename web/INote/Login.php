@@ -11,11 +11,10 @@ require ('dbconnection.php');
 
                 if (!empty($row)) {
                     echo 'login successfully! id:';
-                    echo $row[0];
+                    echo $row[0]['id'];
                     echo $row['id'];
                     echo $row["id"];
                     echo $row['0'];
-                    echo $row(0);
                     header("refresh:1; url=AddNote.php?id=" . $row['id']);
                 } else {
                     echo 'Username or Password Wrong!';
