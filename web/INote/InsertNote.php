@@ -48,13 +48,13 @@ function addModule($db, $module_name, $user_id, $class_id, $note)
 
 function addClass($db, $user_id, $class_name, $module_name, $note)
 {
-
     $stmt = $db->prepare("INSERT INTO class (name) VALUES (:class_name)");
     $stmt->bindValue(':class_name', $class_name, PDO::PARAM_STR);
     $stmt->execute();
     $stmt->fetchAll(PDO::FETCH_ASSOC);
     $class_id = $db->lastInsertId();
 
+    echo 'class id:' . $class_id . '<br>';
     $stmt = $db->prepare("INSERT INTO enrollment (class_id, user_id) VALUES (:class_id, :user_id)");
     $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
     $stmt->bindValue(':note_id', $user_id, PDO::PARAM_INT);
@@ -66,7 +66,7 @@ function addClass($db, $user_id, $class_name, $module_name, $note)
 try {
     $statement = $db->query("SELECT id FROM class WHERE name = '$class_name'");
     $class_id = $statement->fetchAll(PDO::FETCH_ASSOC);
-    //  echo "check class<br>";
+      echo "check class<br>";
     if (!empty($class_id)) {
         // echo "class exist<br>";
         $statement = $db->query("SELECT id FROM module WHERE name = '$module_name'");
@@ -80,7 +80,7 @@ try {
             addModule($db, $module_name, $user_id, $class_id[0]['id'], $note);
         }
     } else {
-        //     echo "class does not exist<br>";
+             echo "class does not exist<br>";
          addClass($db, $user_id, $class_name, $module_name, $note);
     }
 } catch (PDOException $ex) {
