@@ -29,7 +29,7 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
 
 function addModule($db, $module_name, $user_id, $class_id, $note)
 {
-    $stmt = $db->prepare("INSERT INTO class (name) VALUES (:name)");
+    $stmt = $db->prepare("INSERT INTO module (name) VALUES (:name)");
     $stmt->bindValue(':name', $module_name, PDO::PARAM_STR);
     $stmt->execute();
     $stmt->fetchAll(PDO::FETCH_ASSOC);
