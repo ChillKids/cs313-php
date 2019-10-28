@@ -78,7 +78,7 @@ require('dbconnection.php');
                 
                 $statement = $db->query('SELECT id, class_id, module_id, content FROM note WHERE user_id ='.$user_id);
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-                 //   $class_name = $db->query('SELECT name FROM class WHERE id =' . $row["class_id"]);
+                    $class_name = $db->query('SELECT name FROM class WHERE id =' . $row["class_id"]);
                  //   $module_name = $db->query('SELECT name FROM module WHERE id =' . $row["module_id"]);
                  //   echo '<h4>' . $class_name[0] . '</h4> | <h5>' . $module_name[0] . '</h5><br>';
                     echo $row['content'] .$row["class_id"] . $row["module_id"]. '<br>';
