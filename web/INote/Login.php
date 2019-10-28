@@ -13,6 +13,6 @@
                     header("refresh:1; url=AddNote.php");
                 } else {
                     echo 'Username or Password Wrong!';
-                    header("refresh:1; url=INotedb.php")
+                    header("refresh:1; url=INotedb.php");
                 }
                 ?>

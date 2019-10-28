@@ -59,8 +59,8 @@ require('dbconnection.php');
                 <h2>INote Login</h2><br>
 
                 <form action=Login.php method=POST>
-                    Enter your username: (Enter: Jack)<input type=text name=name><br>
-                    Enter your password: (Enter: Leung)<input type=text name=password><br>
+                    Enter your username: <input type=text name=name><br>
+                    Enter your password: <input type=text name=password><br>
                     <input type=submit value="Enter">
                 </form><br>
 
