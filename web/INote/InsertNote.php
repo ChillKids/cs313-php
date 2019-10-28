@@ -81,7 +81,7 @@ try {
         }
     } else {
         //     echo "class does not exist<br>";
-        // addClass($db, $user_id, $class_name, $module_name, $note);
+         addClass($db, $user_id, $class_name, $module_name, $note);
     }
 } catch (PDOException $ex) {
     echo 'Error!: ' . $ex->getMessage();
