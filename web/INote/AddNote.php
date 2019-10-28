@@ -74,11 +74,12 @@ require('dbconnection.php');
                         <input type=textarea id="note" class="md-textarea form-control" name="note" rows="5">
                     </div>
                     <div class="form-group">
-                        <label for="">Write down Your note:</label>
                         <label for="exampleFormControlTextarea1">Write down your note here:</label>
                         <input type="textarea" class="form-control" id="exampleFormControlTextarea1" rows="4" placeholder="Here is your notes...">
+                        <input type="submit" value="Add">
                     </div>
                 </form>
+
 
             </div>
 
