@@ -24,7 +24,7 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
     $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo 'Successfully Saved! It will redirect to note in 3 sec<br/>';
 
-    header("refresh:3; url=AddNote.php?id=" . $user_id);
+  //  header("refresh:3; url=AddNote.php?id=" . $user_id);
 }
 
 function addModule($db, $module_name, $user_id, $class_id, $note)
@@ -34,7 +34,7 @@ function addModule($db, $module_name, $user_id, $class_id, $note)
     $stmt->execute();
     $stmt->fetchAll(PDO::FETCH_ASSOC);
    $module_id = $db->lastInsertId();
-   
+
     echo 'modudle id:' . $module_id . '<br>';
     /*$stmt = $db->prepare("INSERT INTO class_module (module_id, class_id) VALUES (:module_id, :class_id)");
     $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
