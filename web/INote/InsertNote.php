@@ -14,14 +14,14 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
     $stmt->bindValue(':class_id', $class_id, PDO::PARAM_INT);
     $stmt->execute();
     $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  //  $note_id = $rows->insert_id;
-
+    $note_id = $rows->insert_id;
+    echo $note_id;
   //  $stmt = $db->prepare("INSERT INTO module_note (module_id, note_id) VALUES (:module_id, :note_id)");
   //  $stmt->bindValue(':module_id', $module_id, PDO::PARAM_INT);
   //  $stmt->bindValue(':note_id', $note_id, PDO::PARAM_INT);
 
     echo 'Successfully Saved! It will redirect to note in 5 sec<br/>';
-    header("refresh:3; url=AddNode.php?id='$user_id'");
+    header("refresh:3; url=AddNode.php?id=$user_id");
 }
 
 function addModule($db, $module_name, $user_id, $class_id, $note)
