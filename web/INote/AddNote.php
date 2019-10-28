@@ -1,9 +1,10 @@
 <?php
-require ('dbconnection.php');
+require('dbconnection.php');
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,8 +33,8 @@ require ('dbconnection.php');
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Assignments
-                  </a>
+                        Assignments
+                    </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="../hello.html">Assignment01:Hello World</a>
                         <a class="dropdown-item" href="../prove02/prove02.html">Assignment02:HomePage</a>
@@ -55,19 +56,21 @@ require ('dbconnection.php');
     <div class="body">
         <div class="row">
             <div class="col-8 col-s-9 Form">
-            <h2>INote</h2><br>
-            Welcome to I-Note! 
- <?php
- 
- ?>
-            <form action=SignUpSql.php method=POST>
-                    Create your username:<input type=text name=name required><br>
-                    Enter your password:<input type=text name=password required><br>
-                    <input type=submit value=SignUp>
-                
+                <h2>INote</h2><br>
+                Welcome to I-Note!
+                <?php
+
+                ?>
+                <form action=SignUpSql.php method=POST>
+                    <!--Textarea with icon prefix-->
+                    <div class="md-form amber-textarea active-amber-textarea">
+                        <i class="fas fa-pencil-alt prefix"></i>
+                        <textarea id="form22" class="md-textarea form-control" rows="3"></textarea>
+                        <label for="form22">Write down Your note:</label>
+                    </div>
                 </form>
 
- </div>
+            </div>
 
             <div class="col-3 col-s-12">
                 <div class="aside">
@@ -86,6 +89,5 @@ require ('dbconnection.php');
     </div>
 
 </body>
+
 </html>
-
-
