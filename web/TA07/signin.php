@@ -51,6 +51,7 @@ try {
         echo "Success!!!!!!!!!!!!!!!!!!!!!!!";
         die();
     } else {
+        echo "hashed pw: ".$hashed_password;
         echo 'Incorrect password! Please, try again.';
         die();
     }
