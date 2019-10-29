@@ -53,6 +53,7 @@ try {
 
     if (password_verify($password, $stored_password)) {
         echo "Success!!!!!!!!!!!!!!!!!!!!!!!";
+        header("refresh:1; url=welcome.php");
         die();
     } else {
         echo "hashed pw:".$password;
