@@ -41,7 +41,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 try {
-    $stored_password = db->query('SELECT password FROM users WHERE username=\'$username\'');
+    $stored_password = db->query("SELECT password FROM users WHERE username=$username");
   //  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
   //  if (password_verify($hashed_password, $stored_password)) {
   //      $newURL = 'success.php';
