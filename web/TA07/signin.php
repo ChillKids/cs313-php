@@ -49,12 +49,13 @@ try {
                 $stmt->bindValue(':name', $username, PDO::PARAM_STR);
                 $stmt->execute();
                 $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                $stored_password = $row[0]['password'];
 
     if (password_verify($password, $stored_password)) {
         echo "Success!!!!!!!!!!!!!!!!!!!!!!!";
         die();
     } else {
-        echo "hashed pw:".$hashed_password;
+        echo "hashed pw:".$password;
         echo 'Incorrect password! Please, try again.';
         die();
     }
