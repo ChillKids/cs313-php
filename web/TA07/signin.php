@@ -41,7 +41,11 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 try {
-    $stored_password = db->query("SELECT password FROM users WHERE username = 'jack' ");
+    $stmt = $db->prepare("SELECT password FROM users WHERE username = :name");
+                $stmt->bindValue(':name', $username, PDO::PARAM_STR);
+                $stmt->execute();
+                $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
   //  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
   //  if (password_verify($hashed_password, $stored_password)) {
   //      $newURL = 'success.php';
