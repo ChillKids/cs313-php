@@ -34,8 +34,11 @@
 
         	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        	$sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
-            $db->query($sql);
+            $stmt = $db->prepare("INSERT INTO users (username, password) VALUES (:username, :pw)");
+                $stmt->bindValue(':name', $username, PDO::PARAM_STR);
+                $stmt->bindValue(':pw', $hashed_password, PDO::PARAM_STR);
+                $stmt->execute();
+                $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
             header("refresh:1; url=signin.php");
     	}
     	catch (PDOException $ex)
