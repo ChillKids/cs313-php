@@ -46,15 +46,15 @@ try {
                 $stmt->execute();
                 $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-  //  $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-  //  if (password_verify($hashed_password, $stored_password)) {
-  //      $newURL = 'success.php';
-  //      header('Location: ' . $newURL);
-  //      die();
-  //  } else {
-  //      echo 'Incorrect password! Please, try again.';
-  //      die();
-  //  }
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    if (password_verify($hashed_password, $stored_password)) {
+        $newURL = 'success.php';
+        header('Location: ' . $newURL);
+        die();
+    } else {
+        echo 'Incorrect password! Please, try again.';
+        die();
+    }
 } catch (PDOException $ex) {
     echo 'Error!: ' . $ex->getMessage();
     die();
