@@ -40,7 +40,7 @@ try {
 
 $username = $_POST['username'];
 $password = $_POST['password'];
-
+*/
 try {
     $stored_password = db->query('SELECT password FROM users WHERE username=\'$username\'');
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
@@ -55,6 +55,6 @@ try {
 } catch (PDOException $ex) {
     echo 'Error!: ' . $ex->getMessage();
     die();
-}*/
+}
 ?>
 
