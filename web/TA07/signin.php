@@ -7,7 +7,7 @@
 
 <body>
     <div>
-        <form action="ta07.php" method="post">
+        <form action="signin.php" method="post">
             Username: <input type="text" name="username" placeholder="Username"><br>
             Password: <input type="password" name="password" placeholder="Password"><br>
             <button type="submit" name="login-submit">Sign In</button><br>
@@ -15,6 +15,7 @@
         </form>
     </div>
 </body>
+</html>
 
 <?php
 /*
@@ -57,4 +58,3 @@ try {
 }*/
 ?>
 
-</html>
