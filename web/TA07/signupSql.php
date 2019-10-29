@@ -3,20 +3,20 @@
     $password = $_POST['pwd'];
     $password_confirm = $_POST['pwd-repeat'];
 
-    if (empty($username) || empty($password) || empty($passwordconfirm)) {
+   /* if (empty($username) || empty($password) || empty($passwordconfirm)) {
         echo '';
-        header("Location: ../signup.php?error=emptyfields&uid=".$username);
+        header("Location: signup.php?error=emptyfields&uid=".$username);
         exit();
     }
     else if (!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-        header("Location: ../signup.php?error=invaliduid&email=".$email);
+        header("Location: signup.php?error=invaliduid&email=".$email);
         exit();
     }
     else if ($password !== $passwordconfirm) {
-        header("Location: ../signup.php?error=passwrodcheck&uid=".$username."&email=".$email);
+        header("Location: signup.php?error=passwrodcheck&uid=".$username."&email=".$email);
         exit();
     }
-    else {
+    else {*/
     	 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
         try
     		{
@@ -46,5 +46,5 @@
         echo 'Error!: ' . $ex->getMessage();
         die();
     	}
-    }
+   // }
 ?>
