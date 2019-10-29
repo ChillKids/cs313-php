@@ -48,8 +48,7 @@ try {
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
     if (password_verify($hashed_password, $stored_password)) {
-        $newURL = 'success.php';
-        header('Location: ' . $newURL);
+        echo "Success!!!!!!!!!!!!!!!!!!!!!!!";
         die();
     } else {
         echo 'Incorrect password! Please, try again.';

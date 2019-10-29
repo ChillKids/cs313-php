@@ -4,6 +4,7 @@
     $password_confirm = $_POST['pwd-repeat'];
 
     if (empty($username) || empty($password) || empty($passwordconfirm)) {
+        echo '';
         header("Location: ../signup.php?error=emptyfields&uid=".$username);
         exit();
     }
