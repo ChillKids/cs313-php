@@ -34,7 +34,7 @@
 
         	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $stmt = $db->prepare("INSERT INTO users (username, password) VALUES (:username, :pw)");
+            $stmt = $db->prepare("INSERT INTO users (username, password) VALUES (:name, :pw)");
                 $stmt->bindValue(':name', $username, PDO::PARAM_STR);
                 $stmt->bindValue(':pw', $hashed_password, PDO::PARAM_STR);
                 $stmt->execute();
