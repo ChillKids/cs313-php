@@ -1,5 +1,5 @@
-<html>
 
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Sign-In</title>
@@ -18,6 +18,9 @@
 </html>
 
 <?php
+
+session_start();
+
 try {
     $dbUrl = getenv('DATABASE_URL');
 
@@ -39,6 +42,7 @@ try {
 
 $username = $_POST['username'];
 $password = $_POST['password'];
+$_SESSION['username'] = $username;
 
 try {
     $stmt = $db->prepare("SELECT password FROM users WHERE username = :name");
@@ -46,12 +50,11 @@ try {
                 $stmt->execute();
                 $row = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    if (password_verify($hashed_password, $stored_password)) {
+    if (password_verify($password, $stored_password)) {
         echo "Success!!!!!!!!!!!!!!!!!!!!!!!";
         die();
     } else {
-        echo "hashed pw: ".$hashed_password;
+        echo "hashed pw:".$hashed_password;
         echo 'Incorrect password! Please, try again.';
         die();
     }
