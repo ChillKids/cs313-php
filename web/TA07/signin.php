@@ -44,7 +44,7 @@ $password = $_POST['password'];
 
 try
 {
-$stored_password = db->query('SELECT password FROM users WHERE username=\'$username\'';
+$stored_password = db->query('SELECT password FROM users WHERE username=\'$username\'');
 $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 if (password_verify($hashed_password, $stored_password))
 {
@@ -54,11 +54,11 @@ if (password_verify($hashed_password, $stored_password))
 }
 else
 {
-	echo 'Incorrect password! Please, try again.'
+	echo 'Incorrect password! Please, try again.';
   die();
 }
 }
-catch{
+catch (PDOException $ex){
     echo 'Error!: ' . $ex->getMessage();
     die();
 }
