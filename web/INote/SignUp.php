@@ -61,11 +61,11 @@ require('dbconnection.php');
                 <form action=SignUpSql.php method=POST>
                 <div class="form-group">
                         <label for="UserName">Create Your User Name:</label>
-                        <input type="text" class="form-control" id="username" name=name placeholder="Enter username">
+                        <input type="text" class="form-control" id="username" name=name placeholder="Enter username" required>
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Create Password</label>
-                        <input type="password" name=password class="form-control" id="password" placeholder="Password">
+                        <input type="password" name=password class="form-control" id="password" placeholder="Password" required>
                         <small id="pwRemind" class="form-text text-muted">Make sure your password is strong.</small>
                     </div>
                     <input type=submit value=SignUp>
