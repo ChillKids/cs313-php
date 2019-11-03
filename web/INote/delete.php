@@ -1,8 +1,9 @@
 <?php
 require('dbconnection.php');
+session_start();
 
 $note_id = $_GET['note_id'];
-$user_id = $_GET['user_id'];
+$user_id = $_SESSION['id'];
 
 $stmt = $db->prepare("DELETE FROM module_note WHERE note_id = :note_id");
 $stmt->bindValue(':note_id', $note_id, PDO::PARAM_INT);
