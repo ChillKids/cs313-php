@@ -17,7 +17,7 @@ require ('dbconnection.php');
                     header("refresh:1; url=AddNote.php?id=" . $row[0]['id']);
                     die();
                 } else {
-                    echo 'Username or Password Wrong!';
+                    echo 'Username or Password Wrong! ' .$stored_password;
                     header("refresh:1; url=INotedb.php");
                     die();
                 }
