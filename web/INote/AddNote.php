@@ -1,5 +1,6 @@
 <?php
 require('dbconnection.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -59,7 +60,7 @@ require('dbconnection.php');
                 <h2>INote</h2><br>
 
                 <?php
-                $user_id = $_GET['id'];
+                $user_id = $_SESSION['id'];
                 $statement = $db->query("SELECT name FROM user_profile WHERE id = $user_id");
                 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
                 echo '<h3>Welcome to I-Note ' . $results[0]['name'] . '!</h3><br>';

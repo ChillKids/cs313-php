@@ -1,8 +1,9 @@
 <?php
+session_start();
 $note = htmlspecialchars($_POST['note']);
 $class_name = htmlspecialchars($_POST['class_name']);
 $module_name = htmlspecialchars($_POST['module_name']);
-$user_id = $_POST['user_id'];
+$user_id = $_SESSION['id'];
 require('dbconnection.php');
 
 function addNote($db, $note, $user_id, $module_id, $class_id)
@@ -24,7 +25,7 @@ function addNote($db, $note, $user_id, $module_id, $class_id)
     $stmt->fetchAll(PDO::FETCH_ASSOC);
     echo 'Successfully Saved! It will redirect to note in 3 sec<br/>';
 
-    header("refresh:3; url=AddNote.php?id=" . $user_id);
+    header("refresh:3; url=AddNote.php");
 }
 
 function addModule($db, $module_name, $user_id, $class_id, $note)
