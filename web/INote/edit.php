@@ -61,10 +61,20 @@ session_start();
 
                 <?php
                 $user_id = $_SESSION['id'];
-                $statement = $db->query("SELECT name FROM user_profile WHERE id = $user_id");
-                $results = $statement->fetchAll(PDO::FETCH_ASSOC);
-                echo '<h3>Welcome to I-Note ' . $results[0]['name'] . '!</h3><br>';
+                $note_id = $_GET['note_id'];
 
+                echo '<h3>Here is your note:</h3><br>';
+                $stmt = $db->query('SELECT id, class_id, module_id, content FROM note WHERE id ='.$note_id);
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                
+                $stmt = $db->query('SELECT name FROM class WHERE id =' . $row["class_id"]);
+                $class_name = $stmt->fetch(PDO::FETCH_ASSOC);
+                $stmt = $db->query('SELECT name FROM module WHERE id =' . $row["module_id"]);
+                $module_name = $stmt->fetch(PDO::FETCH_ASSOC);
+                echo '<div class="col-11 col-s-9">';
+                echo '<h4>' . $class_name['name'] . ' | ' . $module_name['name'] . '</h4>';
+                echo $row['content'] . '<br>';
+                
                 echo '
                 <form action=AddNoteSql.php method=GET>
                     <input type=hidden name="user_id" value=' . $user_id . '>
