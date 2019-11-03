@@ -77,7 +77,7 @@ session_start();
                 echo '
                 <form action=AddNoteSql.php method=GET>
                     <div class="form-group">
-                        <textarea name="note" class="form-control" value='. $current_content .' id="exampleFormControlTextarea1 note" rows="4" asdf></textarea>
+                        <textarea name="note" class="form-control" id="exampleFormControlTextarea1 note" rows="4">$current_content</textarea>
                         <input type="submit" value="Save">
                     </div>
                 </form> ';
