@@ -61,6 +61,7 @@ session_start();
 
                 <?php
                 $user_id = $_SESSION['id'];
+                echo "User id: ".$user_id. "<br>" ;
                 $statement = $db->query("SELECT name FROM user_profile WHERE id = $user_id");
                 $results = $statement->fetchAll(PDO::FETCH_ASSOC);
                 echo '<h3>Welcome to I-Note ' . $results[0]['name'] . '!</h3><br>';
