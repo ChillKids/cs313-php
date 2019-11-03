@@ -83,6 +83,7 @@ session_start();
                     $class_name = $stmt->fetch(PDO::FETCH_ASSOC);
                     $stmt = $db->query('SELECT name FROM module WHERE id =' . $row["module_id"]);
                     $module_name = $stmt->fetch(PDO::FETCH_ASSOC);
+                    echo '<div class="col-11 col-s-9">';
                     echo '<h4>' . $class_name['name'] . ' | ' . $module_name['name'] . '</h4>';
                     echo $row['content'] . '<br>';
                     $note_id = $row["id"];
@@ -96,6 +97,7 @@ session_start();
                     <input type='hidden' name='note_id' value=". $note_id .">
                     <button type='submit' form='delete$note_id' class='btn btn-secondary btn-lg btn-block'>Delete</button>
                     </form><br>";
+                    echo '</div>';
                 }
                 ?>
                 </div>
