@@ -79,6 +79,8 @@ INSERT INTO note (id, content, class_id, module_id, user_id) VALUES
 SELECT * FROM user_profile
 DELETE FROM note WHERE id > 3; 
 
+UPDATE note SET content = 'I am the edited note' WHERE id = 34;
+
 DELETE FROM user_profile;
 DELETE FROM class;
 DELETE FROM module;

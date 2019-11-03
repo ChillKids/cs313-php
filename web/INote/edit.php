@@ -75,8 +75,9 @@ session_start();
                 $current_content = $row['content'];
                 
                 echo '
-                <form action=AddNoteSql.php method=GET>
+                <form action=editsql.php method=POST>
                     <div class="form-group">
+                         <input type=hidden name=note_id value='. $note_id .'>
                         <textarea name="note" class="form-control" id="exampleFormControlTextarea1 note" rows="4" placeholder="Here is your notes...">'.$current_content.'</textarea>
                         <input type="submit" value="Save">
                     </div>
