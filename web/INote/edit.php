@@ -66,22 +66,19 @@ session_start();
                 echo '<h3>Here is your note:</h3><br>';
                 $stmt = $db->query('SELECT id, class_id, module_id, content FROM note WHERE id ='.$note_id);
                 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-                
                 $stmt = $db->query('SELECT name FROM class WHERE id =' . $row["class_id"]);
                 $class_name = $stmt->fetch(PDO::FETCH_ASSOC);
                 $stmt = $db->query('SELECT name FROM module WHERE id =' . $row["module_id"]);
                 $module_name = $stmt->fetch(PDO::FETCH_ASSOC);
                 echo '<div class="col-11 col-s-9">';
                 echo '<h4>' . $class_name['name'] . ' | ' . $module_name['name'] . '</h4>';
-                echo $row['content'] . '<br>';
+                $current_content = $row['content'];
                 
                 echo '
                 <form action=AddNoteSql.php method=GET>
-                    <input type=hidden name="user_id" value=' . $user_id . '>
                     <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Write down your note here:</label>
-                        <textarea name="note" class="form-control" id="exampleFormControlTextarea1 note" rows="4" placeholder="Here is your notes..."></textarea>
-                        <input type="submit" value="Add">
+                        <textarea name="note" class="form-control" value="'. $current_content .'" id="exampleFormControlTextarea1 note" rows="4" placeholder="Here is your notes..."></textarea>
+                        <input type="submit" value="Save">
                     </div>
                 </form> ';
 
