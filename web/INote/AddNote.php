@@ -1,10 +1,6 @@
 <?php
 require('dbconnection.php');
 session_start();
-if ($_SESSION['id'] == ""){
-    echo "It will redirect you back to the login page";
-    header("refresh:3; url=INotedb.php");
-}
 ?>
 
 <!DOCTYPE html>
@@ -64,6 +60,11 @@ if ($_SESSION['id'] == ""){
                 <h2>INote</h2><br>
                 <div id='right'><button type="button" onclick="location.href='INotedb.php'">Log Out</button></div>
                 <?php
+                if ($_SESSION['id'] == ""){
+                    echo "It will redirect you back to the login page";
+                    header("refresh:3; url=INotedb.php");
+                }
+                
                 $user_id = $_SESSION['id'];
                 $statement = $db->query("SELECT name FROM user_profile WHERE id = $user_id");
                 $results = $statement->fetchAll(PDO::FETCH_ASSOC);

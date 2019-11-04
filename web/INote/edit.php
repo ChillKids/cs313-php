@@ -60,6 +60,10 @@ session_start();
                 <h2>INote</h2><br>
 
                 <?php
+                if ($_SESSION['id'] == ""){
+                    echo "It will redirect you back to the login page";
+                    header("refresh:3; url=INotedb.php");
+                }
                 $user_id = $_SESSION['id'];
                 $note_id = $_GET['note_id'];
 

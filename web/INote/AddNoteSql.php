@@ -59,6 +59,10 @@ require('dbconnection.php');
             <div class="col-8 col-s-9 Form">
                 <h2>INote Insert</h2><br>
 <?php
+if ($_SESSION['id'] == ""){
+    echo "It will redirect you back to the login page";
+    header("refresh:3; url=INotedb.php");
+}
                 echo "
                 <form action=InsertNote.php method=POST>
                     <input type=hidden name=note value='$note'>
