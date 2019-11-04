@@ -1,6 +1,10 @@
 <?php
 require('dbconnection.php');
 session_start();
+if ($_SESSION['id'] === ""){
+    echo "It will redirect you back to the login page";
+    header("refresh:3; url=INotedb.php");
+}
 ?>
 
 <!DOCTYPE html>
