@@ -1,6 +1,7 @@
 <?php
 $note = htmlspecialchars($_GET['note']);
 require('dbconnection.php');
+session_start();
 ?>
 
 <!DOCTYPE html>
