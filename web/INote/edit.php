@@ -80,6 +80,7 @@ session_start();
                          <input type=hidden name=note_id value='. $note_id .'>
                         <textarea name="note" class="form-control" id="exampleFormControlTextarea1 note" rows="4" placeholder="Here is your notes...">'.$current_content.'</textarea>
                         <input type="submit" value="Save">
+                        <input type="button" value="Back" onclick=location.href="AddNote.php";>
                     </div>
                 </form> ';
 
