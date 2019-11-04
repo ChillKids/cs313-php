@@ -85,7 +85,7 @@ session_start();
 
                 echo '<div class="col-11 col-s-9 Form"> <h3>Note List</h3>';
                 
-                $statement = $db->query("SELECT id, class_id, module_id, content FROM note WHERE (user_id ='$user_id', id !='$note_id' ");
+                $statement = $db->query("SELECT id, class_id, module_id, content FROM note WHERE (user_id ='$user_id' AND id !='$note_id')");
                 while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
                     $stmt = $db->query('SELECT name FROM class WHERE id =' . $row["class_id"]);
                     $class_name = $stmt->fetch(PDO::FETCH_ASSOC);

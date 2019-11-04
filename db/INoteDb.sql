@@ -80,6 +80,7 @@ SELECT * FROM user_profile
 DELETE FROM note WHERE id > 3; 
 
 UPDATE note SET content = 'I am the edited note' WHERE id = 34;
+SELECT id, class_id, module_id, content FROM note WHERE (user_id ='$user_id' AND id !='$note_id');
 
 DELETE FROM user_profile;
 DELETE FROM class;
