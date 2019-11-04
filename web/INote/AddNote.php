@@ -58,7 +58,7 @@ session_start();
         <div class="row">
             <div class="col-11 col-s-9 Form">
                 <h2>INote</h2><br>
-
+                <div id='right'><button type="button" onclick="location.href="INotedb.php.php">Log Out</button></div>
                 <?php
                 $user_id = $_SESSION['id'];
                 $statement = $db->query("SELECT name FROM user_profile WHERE id = $user_id");
